@@ -1,0 +1,10 @@
+^E:\COPROCESORNAUTILUS\BUILD\CMAKEFILES\55F9549CA72F48E378F6B4F0693F85FC\GENERATE.STAMP.RULE
+setlocal
+E:\CMake\bin\cmake.exe -SE:/CoprocesorNautilus -BE:/CoprocesorNautilus/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file E:/CoprocesorNautilus/build/NautilusCoproccesor.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

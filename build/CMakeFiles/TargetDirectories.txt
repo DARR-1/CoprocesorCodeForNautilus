@@ -1,0 +1,9 @@
+E:/CoprocesorNautilus/build/CMakeFiles/Experimental.dir
+E:/CoprocesorNautilus/build/CMakeFiles/Nightly.dir
+E:/CoprocesorNautilus/build/CMakeFiles/Continuous.dir
+E:/CoprocesorNautilus/build/CMakeFiles/NightlyMemoryCheck.dir
+E:/CoprocesorNautilus/build/CMakeFiles/NautilusCoproccesor.dir
+E:/CoprocesorNautilus/build/CMakeFiles/PACKAGE.dir
+E:/CoprocesorNautilus/build/CMakeFiles/RUN_TESTS.dir
+E:/CoprocesorNautilus/build/CMakeFiles/ALL_BUILD.dir
+E:/CoprocesorNautilus/build/CMakeFiles/ZERO_CHECK.dir

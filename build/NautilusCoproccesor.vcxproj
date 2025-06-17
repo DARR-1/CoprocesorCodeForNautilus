@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{DEC81A54-775B-3955-9B3B-E89E256C4129}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>NautilusCoproccesor</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">E:\CoprocesorNautilus\build\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NautilusCoproccesor.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NautilusCoproccesor</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\CoprocesorNautilus\build\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NautilusCoproccesor.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NautilusCoproccesor</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">E:\CoprocesorNautilus\build\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">NautilusCoproccesor.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">NautilusCoproccesor</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">E:\CoprocesorNautilus\build\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">NautilusCoproccesor.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">NautilusCoproccesor</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "E:/opencv/build/include"</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\opencv\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\opencv\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>Ws2_32.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110d.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110d.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110d.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110d.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110d.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110d.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110d.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110d.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110d.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110d.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110d.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110d.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110d.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110d.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110d.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>E:/CoprocesorNautilus/build/Debug/NautilusCoproccesor.lib</ImportLibrary>
+      <ProgramDataBaseFile>E:/CoprocesorNautilus/build/Debug/NautilusCoproccesor.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "E:/opencv/build/include"</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\opencv\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\opencv\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>Ws2_32.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>E:/CoprocesorNautilus/build/Release/NautilusCoproccesor.lib</ImportLibrary>
+      <ProgramDataBaseFile>E:/CoprocesorNautilus/build/Release/NautilusCoproccesor.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "E:/opencv/build/include"</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\opencv\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\opencv\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>Ws2_32.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>E:/CoprocesorNautilus/build/MinSizeRel/NautilusCoproccesor.lib</ImportLibrary>
+      <ProgramDataBaseFile>E:/CoprocesorNautilus/build/MinSizeRel/NautilusCoproccesor.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "E:/opencv/build/include"</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\opencv\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\opencv\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>Ws2_32.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;E:\opencv\build\x64\vc16\lib\opencv_world4110.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>E:/CoprocesorNautilus/build/RelWithDebInfo/NautilusCoproccesor.lib</ImportLibrary>
+      <ProgramDataBaseFile>E:/CoprocesorNautilus/build/RelWithDebInfo/NautilusCoproccesor.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\CoprocesorNautilus\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule E:/CoprocesorNautilus/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+E:\CMake\bin\cmake.exe -SE:/CoprocesorNautilus -BE:/CoprocesorNautilus/build --check-stamp-file E:/CoprocesorNautilus/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">E:\CMake\share\cmake-3.31\Modules\CMakeCInformation.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeCXXInformation.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeCommonLanguageInclude.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeGenericSystem.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeInitializeConfigs.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeLanguageInformation.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeRCInformation.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInformation.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInitialize.cmake;E:\CMake\share\cmake-3.31\Modules\CPack.cmake;E:\CMake\share\cmake-3.31\Modules\CPackComponent.cmake;E:\CMake\share\cmake-3.31\Modules\CTest.cmake;E:\CMake\share\cmake-3.31\Modules\CTestTargets.cmake;E:\CMake\share\cmake-3.31\Modules\CTestUseLaunchers.cmake;E:\CMake\share\cmake-3.31\Modules\Compiler\CMakeCommonCompilerMacros.cmake;E:\CMake\share\cmake-3.31\Modules\Compiler\MSVC-C.cmake;E:\CMake\share\cmake-3.31\Modules\Compiler\MSVC-CXX.cmake;E:\CMake\share\cmake-3.31\Modules\Compiler\MSVC.cmake;E:\CMake\share\cmake-3.31\Modules\DartConfiguration.tcl.in;E:\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;E:\CMake\share\cmake-3.31\Modules\FindPackageMessage.cmake;E:\CMake\share\cmake-3.31\Modules\Internal\CMakeCLinkerInformation.cmake;E:\CMake\share\cmake-3.31\Modules\Internal\CMakeCXXLinkerInformation.cmake;E:\CMake\share\cmake-3.31\Modules\Internal\CMakeCommonLinkerInformation.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-C.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Windows-Initialize.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC-C.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC-CXX.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Windows.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\WindowsPaths.cmake;E:\CMake\share\cmake-3.31\Templates\CPackConfig.cmake.in;E:\CoprocesorNautilus\build\CMakeFiles\3.31.0\CMakeCCompiler.cmake;E:\CoprocesorNautilus\build\CMakeFiles\3.31.0\CMakeCXXCompiler.cmake;E:\CoprocesorNautilus\build\CMakeFiles\3.31.0\CMakeRCCompiler.cmake;E:\CoprocesorNautilus\build\CMakeFiles\3.31.0\CMakeSystem.cmake;E:\opencv\build\OpenCVConfig-version.cmake;E:\opencv\build\OpenCVConfig.cmake;E:\opencv\build\x64\vc16\lib\OpenCVConfig.cmake;E:\opencv\build\x64\vc16\lib\OpenCVModules-debug.cmake;E:\opencv\build\x64\vc16\lib\OpenCVModules-release.cmake;E:\opencv\build\x64\vc16\lib\OpenCVModules.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">E:\CoprocesorNautilus\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule E:/CoprocesorNautilus/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+E:\CMake\bin\cmake.exe -SE:/CoprocesorNautilus -BE:/CoprocesorNautilus/build --check-stamp-file E:/CoprocesorNautilus/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\CMake\share\cmake-3.31\Modules\CMakeCInformation.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeCXXInformation.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeCommonLanguageInclude.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeGenericSystem.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeInitializeConfigs.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeLanguageInformation.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeRCInformation.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInformation.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInitialize.cmake;E:\CMake\share\cmake-3.31\Modules\CPack.cmake;E:\CMake\share\cmake-3.31\Modules\CPackComponent.cmake;E:\CMake\share\cmake-3.31\Modules\CTest.cmake;E:\CMake\share\cmake-3.31\Modules\CTestTargets.cmake;E:\CMake\share\cmake-3.31\Modules\CTestUseLaunchers.cmake;E:\CMake\share\cmake-3.31\Modules\Compiler\CMakeCommonCompilerMacros.cmake;E:\CMake\share\cmake-3.31\Modules\Compiler\MSVC-C.cmake;E:\CMake\share\cmake-3.31\Modules\Compiler\MSVC-CXX.cmake;E:\CMake\share\cmake-3.31\Modules\Compiler\MSVC.cmake;E:\CMake\share\cmake-3.31\Modules\DartConfiguration.tcl.in;E:\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;E:\CMake\share\cmake-3.31\Modules\FindPackageMessage.cmake;E:\CMake\share\cmake-3.31\Modules\Internal\CMakeCLinkerInformation.cmake;E:\CMake\share\cmake-3.31\Modules\Internal\CMakeCXXLinkerInformation.cmake;E:\CMake\share\cmake-3.31\Modules\Internal\CMakeCommonLinkerInformation.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-C.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Windows-Initialize.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC-C.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC-CXX.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Windows.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\WindowsPaths.cmake;E:\CMake\share\cmake-3.31\Templates\CPackConfig.cmake.in;E:\CoprocesorNautilus\build\CMakeFiles\3.31.0\CMakeCCompiler.cmake;E:\CoprocesorNautilus\build\CMakeFiles\3.31.0\CMakeCXXCompiler.cmake;E:\CoprocesorNautilus\build\CMakeFiles\3.31.0\CMakeRCCompiler.cmake;E:\CoprocesorNautilus\build\CMakeFiles\3.31.0\CMakeSystem.cmake;E:\opencv\build\OpenCVConfig-version.cmake;E:\opencv\build\OpenCVConfig.cmake;E:\opencv\build\x64\vc16\lib\OpenCVConfig.cmake;E:\opencv\build\x64\vc16\lib\OpenCVModules-debug.cmake;E:\opencv\build\x64\vc16\lib\OpenCVModules-release.cmake;E:\opencv\build\x64\vc16\lib\OpenCVModules.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\CoprocesorNautilus\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule E:/CoprocesorNautilus/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+E:\CMake\bin\cmake.exe -SE:/CoprocesorNautilus -BE:/CoprocesorNautilus/build --check-stamp-file E:/CoprocesorNautilus/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">E:\CMake\share\cmake-3.31\Modules\CMakeCInformation.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeCXXInformation.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeCommonLanguageInclude.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeGenericSystem.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeInitializeConfigs.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeLanguageInformation.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeRCInformation.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInformation.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInitialize.cmake;E:\CMake\share\cmake-3.31\Modules\CPack.cmake;E:\CMake\share\cmake-3.31\Modules\CPackComponent.cmake;E:\CMake\share\cmake-3.31\Modules\CTest.cmake;E:\CMake\share\cmake-3.31\Modules\CTestTargets.cmake;E:\CMake\share\cmake-3.31\Modules\CTestUseLaunchers.cmake;E:\CMake\share\cmake-3.31\Modules\Compiler\CMakeCommonCompilerMacros.cmake;E:\CMake\share\cmake-3.31\Modules\Compiler\MSVC-C.cmake;E:\CMake\share\cmake-3.31\Modules\Compiler\MSVC-CXX.cmake;E:\CMake\share\cmake-3.31\Modules\Compiler\MSVC.cmake;E:\CMake\share\cmake-3.31\Modules\DartConfiguration.tcl.in;E:\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;E:\CMake\share\cmake-3.31\Modules\FindPackageMessage.cmake;E:\CMake\share\cmake-3.31\Modules\Internal\CMakeCLinkerInformation.cmake;E:\CMake\share\cmake-3.31\Modules\Internal\CMakeCXXLinkerInformation.cmake;E:\CMake\share\cmake-3.31\Modules\Internal\CMakeCommonLinkerInformation.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-C.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Windows-Initialize.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC-C.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC-CXX.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Windows.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\WindowsPaths.cmake;E:\CMake\share\cmake-3.31\Templates\CPackConfig.cmake.in;E:\CoprocesorNautilus\build\CMakeFiles\3.31.0\CMakeCCompiler.cmake;E:\CoprocesorNautilus\build\CMakeFiles\3.31.0\CMakeCXXCompiler.cmake;E:\CoprocesorNautilus\build\CMakeFiles\3.31.0\CMakeRCCompiler.cmake;E:\CoprocesorNautilus\build\CMakeFiles\3.31.0\CMakeSystem.cmake;E:\opencv\build\OpenCVConfig-version.cmake;E:\opencv\build\OpenCVConfig.cmake;E:\opencv\build\x64\vc16\lib\OpenCVConfig.cmake;E:\opencv\build\x64\vc16\lib\OpenCVModules-debug.cmake;E:\opencv\build\x64\vc16\lib\OpenCVModules-release.cmake;E:\opencv\build\x64\vc16\lib\OpenCVModules.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">E:\CoprocesorNautilus\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule E:/CoprocesorNautilus/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+E:\CMake\bin\cmake.exe -SE:/CoprocesorNautilus -BE:/CoprocesorNautilus/build --check-stamp-file E:/CoprocesorNautilus/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">E:\CMake\share\cmake-3.31\Modules\CMakeCInformation.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeCXXInformation.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeCommonLanguageInclude.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeGenericSystem.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeInitializeConfigs.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeLanguageInformation.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeRCInformation.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInformation.cmake;E:\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInitialize.cmake;E:\CMake\share\cmake-3.31\Modules\CPack.cmake;E:\CMake\share\cmake-3.31\Modules\CPackComponent.cmake;E:\CMake\share\cmake-3.31\Modules\CTest.cmake;E:\CMake\share\cmake-3.31\Modules\CTestTargets.cmake;E:\CMake\share\cmake-3.31\Modules\CTestUseLaunchers.cmake;E:\CMake\share\cmake-3.31\Modules\Compiler\CMakeCommonCompilerMacros.cmake;E:\CMake\share\cmake-3.31\Modules\Compiler\MSVC-C.cmake;E:\CMake\share\cmake-3.31\Modules\Compiler\MSVC-CXX.cmake;E:\CMake\share\cmake-3.31\Modules\Compiler\MSVC.cmake;E:\CMake\share\cmake-3.31\Modules\DartConfiguration.tcl.in;E:\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;E:\CMake\share\cmake-3.31\Modules\FindPackageMessage.cmake;E:\CMake\share\cmake-3.31\Modules\Internal\CMakeCLinkerInformation.cmake;E:\CMake\share\cmake-3.31\Modules\Internal\CMakeCXXLinkerInformation.cmake;E:\CMake\share\cmake-3.31\Modules\Internal\CMakeCommonLinkerInformation.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-C.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Windows-Initialize.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC-C.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC-CXX.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\Windows.cmake;E:\CMake\share\cmake-3.31\Modules\Platform\WindowsPaths.cmake;E:\CMake\share\cmake-3.31\Templates\CPackConfig.cmake.in;E:\CoprocesorNautilus\build\CMakeFiles\3.31.0\CMakeCCompiler.cmake;E:\CoprocesorNautilus\build\CMakeFiles\3.31.0\CMakeCXXCompiler.cmake;E:\CoprocesorNautilus\build\CMakeFiles\3.31.0\CMakeRCCompiler.cmake;E:\CoprocesorNautilus\build\CMakeFiles\3.31.0\CMakeSystem.cmake;E:\opencv\build\OpenCVConfig-version.cmake;E:\opencv\build\OpenCVConfig.cmake;E:\opencv\build\x64\vc16\lib\OpenCVConfig.cmake;E:\opencv\build\x64\vc16\lib\OpenCVModules-debug.cmake;E:\opencv\build\x64\vc16\lib\OpenCVModules-release.cmake;E:\opencv\build\x64\vc16\lib\OpenCVModules.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">E:\CoprocesorNautilus\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="E:\CoprocesorNautilus\astar.cpp" />
+    <ClCompile Include="E:\CoprocesorNautilus\main.cpp" />
+    <ClCompile Include="E:\CoprocesorNautilus\Server.cpp" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="E:\CoprocesorNautilus\build\ZERO_CHECK.vcxproj">
+      <Project>{FC98B36D-C04F-33D8-BE74-ADA1CC294BFC}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
