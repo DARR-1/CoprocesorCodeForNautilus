@@ -1,0 +1,20 @@
+[
+{
+  "directory": "E:/CoprocesorCodeForNautilus/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -std=c++17 -o CMakeFiles\\NautilusCoproccesor.dir\\astar.cpp.obj -c E:\\CoprocesorCodeForNautilus\\astar.cpp",
+  "file": "E:/CoprocesorCodeForNautilus/astar.cpp",
+  "output": "CMakeFiles/NautilusCoproccesor.dir/astar.cpp.obj"
+},
+{
+  "directory": "E:/CoprocesorCodeForNautilus/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -std=c++17 -o CMakeFiles\\NautilusCoproccesor.dir\\main.cpp.obj -c E:\\CoprocesorCodeForNautilus\\main.cpp",
+  "file": "E:/CoprocesorCodeForNautilus/main.cpp",
+  "output": "CMakeFiles/NautilusCoproccesor.dir/main.cpp.obj"
+},
+{
+  "directory": "E:/CoprocesorCodeForNautilus/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -std=c++17 -o CMakeFiles\\NautilusCoproccesor.dir\\Server.cpp.obj -c E:\\CoprocesorCodeForNautilus\\Server.cpp",
+  "file": "E:/CoprocesorCodeForNautilus/Server.cpp",
+  "output": "CMakeFiles/NautilusCoproccesor.dir/Server.cpp.obj"
+}
+]

@@ -14,9 +14,9 @@ struct cell
     // f = g + h
     double f, g, h;
 };
-
-#define ROW 634 + 1
-#define COL 1381 + 1
+#define QUALITY 1 / 2
+#define ROW ((634 / 2) * QUALITY) + 1
+#define COL ((1381 / 2) * QUALITY) + 1
 
 class AStar
 {

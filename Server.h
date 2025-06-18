@@ -12,6 +12,8 @@ public:
     int initialize();
     int listen();
     int accept();
+    int send(const char *buffer, int length);
+    int receive(char *buffer, int length);
     int close();
 
 private:

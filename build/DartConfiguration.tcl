@@ -4,8 +4,8 @@
 
 
 # Configuration directories and files
-SourceDirectory: E:/CoprocesorNautilus
-BuildDirectory: E:/CoprocesorNautilus/build
+SourceDirectory: E:/CoprocesorCodeForNautilus
+BuildDirectory: E:/CoprocesorCodeForNautilus/build
 
 # Where to place the cost data store
 CostDataFile: 
@@ -14,7 +14,7 @@ CostDataFile:
 Site: DARR
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
-BuildName: Win32-MSBuild
+BuildName: Win32-mingw32-make
 
 # Subprojects
 LabelsForSubprojects: 
@@ -27,8 +27,8 @@ SubmitInactivityTimeout:
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "E:/CMake/bin/cmake.exe" "E:/CoprocesorNautilus"
-MakeCommand: E:\CMake\bin\cmake.exe --build . --config "${CTEST_CONFIGURATION_TYPE}"
+ConfigureCommand: "E:/CMake/bin/cmake.exe" "E:/CoprocesorCodeForNautilus"
+MakeCommand: E:/CMake/bin/cmake.exe --build . --config "${CTEST_CONFIGURATION_TYPE}"
 DefaultCTestConfigurationType: Release
 
 # version control
@@ -45,7 +45,7 @@ SVNOptions:
 SVNUpdateOptions: 
 
 # Git options
-GITCommand: 
+GITCommand: C:/Program Files/Git/cmd/git.exe
 GITInitSubmodules: 
 GITUpdateOptions: 
 GITUpdateCustom: 
@@ -58,13 +58,13 @@ P4UpdateOptions:
 P4UpdateCustom: 
 
 # Generic update command
-UpdateCommand: 
+UpdateCommand: C:/Program Files/Git/cmd/git.exe
 UpdateOptions: 
-UpdateType: 
+UpdateType: git
 
 # Compiler info
-Compiler: C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.36.32532/bin/Hostx64/x64/cl.exe
-CompilerVersion: 19.36.32535.0
+Compiler: C:/msys64/ucrt64/bin/g++.exe
+CompilerVersion: 15.1.0
 
 # Dynamic analysis (MemCheck)
 PurifyCommand: 
@@ -98,7 +98,7 @@ TestLoad:
 TLSVerify: 
 TLSVersion: 
 
-UseLaunchers: 0
+UseLaunchers: 
 CurlOptions: 
 # warning, if you add new options here that have to do with submit,
 # you have to update cmCTestSubmitCommand.cxx

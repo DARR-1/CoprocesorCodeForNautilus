@@ -1,6 +1,21 @@
 #include "Server.h"
 #include <stdio.h>
+
+#ifdef _WIN32
+#include <winsock2.h>
 #include <Ws2tcpip.h>
+#pragma comment(lib, "Ws2_32.lib")
+#else
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+#include <netdb.h>
+#define INVALID_SOCKET (-1)
+#define SOCKET_ERROR (-1)
+typedef int SOCKET;
+#endif
 
 Server::~Server() {}
 
@@ -16,65 +31,103 @@ Server::Server(u_short port)
     this->hostname = "0.0.0.0";
 }
 
-/* Initialize Winsock */
+/* Initialize Winsock (solo en Windows) */
 int Server::initialize()
 {
+#ifdef _WIN32
     error = WSAStartup(MAKEWORD(2, 2), &wsaData);
     if (error)
     {
-        printf("WSAStartup() failed with error: %d\n", error);
+        printf("WSAStartup() failed con error: %d\n", error);
         return 1;
     }
+#endif
 
     ListenSocket = socket(AF_INET, SOCK_STREAM, 0);
-
     if (ListenSocket == INVALID_SOCKET)
     {
-        printf("socket() failed with error: %d\n", WSAGetLastError());
+        printf("socket() failed con error: %d\n",
+#ifdef _WIN32
+               WSAGetLastError()
+#else
+               errno
+#endif
+        );
+#ifdef _WIN32
         WSACleanup();
+#endif
         return 1;
     }
 
     service.sin_family = AF_INET;
     service.sin_port = htons(port);
-    struct addrinfo hints, *result = NULL;
+
+    struct addrinfo hints, *result = nullptr;
     ZeroMemory(&hints, sizeof(hints));
     hints.ai_family = AF_INET;
-    error = getaddrinfo(hostname.c_str(), NULL, &hints, &result);
+
+    error = getaddrinfo(hostname.c_str(), nullptr, &hints, &result);
     if (error != 0)
     {
-        printf("getaddrinfo() failed with error: %d\n", error);
-        closesocket(ListenSocket);
-        WSACleanup();
+        printf("getaddrinfo() failed con error: %d\n", error);
+        close();
         return 1;
     }
 
-    struct sockaddr_in *sock = (struct sockaddr_in *)result->ai_addr;
+    sockaddr_in *sock = (sockaddr_in *)result->ai_addr;
     char ipBuffer[INET_ADDRSTRLEN];
-    if (InetNtop(AF_INET, &sock->sin_addr, ipBuffer, sizeof(ipBuffer)) == NULL)
+    if (
+#ifdef _WIN32
+        InetNtop(AF_INET, &sock->sin_addr, ipBuffer, sizeof(ipBuffer)) == nullptr
+#else
+        !inet_ntop(AF_INET, &sock->sin_addr, ipBuffer, sizeof(ipBuffer))
+#endif
+    )
     {
-        printf("InetNtop() failed with error: %ld\n", WSAGetLastError());
+        printf("InetNtop() failed con error: %d\n",
+#ifdef _WIN32
+               WSAGetLastError()
+#else
+               errno
+#endif
+        );
         freeaddrinfo(result);
-        closesocket(ListenSocket);
-        WSACleanup();
+        close();
         return 1;
     }
-    ip = ipBuffer; // std::string hace copia
+    ip = ipBuffer;
     freeaddrinfo(result);
 
-    if (inet_pton(AF_INET, ip.c_str(), &service.sin_addr) <= 0)
+    if (
+#ifdef _WIN32
+        inet_pton(AF_INET, ip.c_str(), &service.sin_addr) <= 0
+#else
+        inet_pton(AF_INET, ip.c_str(), &service.sin_addr) != 1
+#endif
+    )
     {
-        printf("inet_pton() failed with error: %d\n", WSAGetLastError());
-        closesocket(ListenSocket);
-        WSACleanup();
+        printf("inet_pton() failed con error: %d\n",
+#ifdef _WIN32
+               WSAGetLastError()
+#else
+               errno
+#endif
+        );
+        close();
         return 1;
     }
-    error = bind(ListenSocket, (SOCKADDR *)&service, sizeof(SOCKADDR));
+
+    error = bind(ListenSocket, (sockaddr *)&service, sizeof(service));
     if (error == SOCKET_ERROR)
     {
-        printf("bind() failed with error: %d\n", WSAGetLastError());
-        closesocket(ListenSocket);
-        WSACleanup();
+        printf("bind() failed con error: %d\n",
+#ifdef _WIN32
+               WSAGetLastError()
+#else
+               errno
+#endif
+        );
+        close();
         return 1;
     }
     return 0;
@@ -85,9 +138,14 @@ int Server::listen()
     error = ::listen(ListenSocket, SOMAXCONN);
     if (error == SOCKET_ERROR)
     {
-        printf("listen() failed with error: %d\n", WSAGetLastError());
-        closesocket(ListenSocket);
-        WSACleanup();
+        printf("listen() failed con error: %d\n",
+#ifdef _WIN32
+               WSAGetLastError()
+#else
+               errno
+#endif
+        );
+        close();
         return 1;
     }
     printf("Listening...\n");
@@ -96,31 +154,76 @@ int Server::listen()
 
 int Server::accept()
 {
-    struct sockaddr_in cli;
-    int cliSize = sizeof(cli);
+    sockaddr_in cli;
+    socklen_t cliSize = sizeof(cli);
     AcceptSocket = ::accept(ListenSocket, (sockaddr *)&cli, &cliSize);
     if (AcceptSocket == INVALID_SOCKET)
     {
-        printf("accept() failed with error: %d\n", WSAGetLastError());
-        closesocket(ListenSocket);
-        WSACleanup();
+        printf("accept() failed con error: %d\n",
+#ifdef _WIN32
+               WSAGetLastError()
+#else
+               errno
+#endif
+        );
+        close();
         return -1;
     }
 
     char clientIp[INET_ADDRSTRLEN];
-    InetNtop(AF_INET, &cli.sin_addr, clientIp, sizeof(clientIp));
+    inet_ntop(AF_INET, &cli.sin_addr, clientIp, sizeof(clientIp));
     u_short clientPort = ntohs(cli.sin_port);
 
     printf("Accepted connection from %s:%d\n", clientIp, clientPort);
     return 0;
 }
 
+int Server::send(const char *buffer, int length)
+{
+    int bytesSent = ::send(AcceptSocket, buffer, length, 0);
+    if (bytesSent == SOCKET_ERROR)
+    {
+        printf("send() failed con error: %d\n",
+#ifdef _WIN32
+               WSAGetLastError()
+#else
+               errno
+#endif
+        );
+        return -1;
+    }
+    printf("Sent %d bytes to client.\n", bytesSent);
+    return bytesSent;
+}
+
+int Server::receive(char *buffer, int length)
+{
+    int bytesReceived = ::recv(AcceptSocket, buffer, length, 0);
+    if (bytesReceived == SOCKET_ERROR)
+    {
+        printf("recv() failed con error: %d\n",
+#ifdef _WIN32
+               WSAGetLastError()
+#else
+               errno
+#endif
+        );
+        return -1;
+    }
+    printf("Received %d bytes from client.\n", bytesReceived);
+    return bytesReceived;
+}
+
 int Server::close()
 {
+#ifdef _WIN32
     closesocket(AcceptSocket);
     closesocket(ListenSocket);
     WSACleanup();
+#else
+    ::close(AcceptSocket);
+    ::close(ListenSocket);
+#endif
     printf("Server closed.\n");
-
     return 0;
 }
