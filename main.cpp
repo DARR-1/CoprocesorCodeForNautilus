@@ -195,7 +195,7 @@ else
     std::cout << "Paths cargados desde " << cacheFile << "\n";
 }
 */
-    auto t_start = std::chrono::high_resolution_clock::now();
+    // auto t_start = std::chrono::high_resolution_clock::now();
 
     src = {0, 0};
     dest = {ROW - 1, (COL - 1) / 2};
@@ -255,6 +255,8 @@ else
     char buffer[200] = "";
     server.receive(buffer, 200);
     std::cout << "Received from client: " << buffer << std::endl;
+
+    auto t_start = std::chrono::high_resolution_clock::now();
 
     if (strcmp(buffer, "pathfind") == 0)
     {
@@ -330,9 +332,9 @@ else
     {
         // Handle other cases if needed
     }
-    // auto t_end = std::chrono::high_resolution_clock::now();
-    // auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(t_end - t_start).count();
+    auto t_end = std::chrono::high_resolution_clock::now();
+    auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(t_end - t_start).count();
 
-    // std::cout << "Tiempo de ejecución total: " << elapsed << " ms\n";
+    std::cout << "Tiempo de ejecución total: " << elapsed << " ms\n";
     return server.close();
 }
