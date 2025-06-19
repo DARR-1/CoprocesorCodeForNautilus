@@ -2,6 +2,8 @@
 
 #include <winsock2.h>
 #include <string>
+#include <cstring>
+#include <cstdlib>
 
 class Server
 {
