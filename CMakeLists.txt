@@ -10,7 +10,7 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 include(CTest)
 enable_testing()
 
-add_executable(NautilusCoproccesor astar.cpp main.cpp Server.cpp)
+add_executable(NautilusCoproccesor astar.cpp main.cpp Server.cpp ClientConnection.cpp)
 
 target_link_libraries(NautilusCoproccesor
     Ws2_32

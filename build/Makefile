@@ -522,6 +522,30 @@ NautilusCoproccesor/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\NautilusCoproccesor.dir\build.make CMakeFiles/NautilusCoproccesor.dir/build
 .PHONY : NautilusCoproccesor/fast
 
+ClientConnection.obj: ClientConnection.cpp.obj
+.PHONY : ClientConnection.obj
+
+# target to build an object file
+ClientConnection.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NautilusCoproccesor.dir\build.make CMakeFiles/NautilusCoproccesor.dir/ClientConnection.cpp.obj
+.PHONY : ClientConnection.cpp.obj
+
+ClientConnection.i: ClientConnection.cpp.i
+.PHONY : ClientConnection.i
+
+# target to preprocess a source file
+ClientConnection.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NautilusCoproccesor.dir\build.make CMakeFiles/NautilusCoproccesor.dir/ClientConnection.cpp.i
+.PHONY : ClientConnection.cpp.i
+
+ClientConnection.s: ClientConnection.cpp.s
+.PHONY : ClientConnection.s
+
+# target to generate assembly for a file
+ClientConnection.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NautilusCoproccesor.dir\build.make CMakeFiles/NautilusCoproccesor.dir/ClientConnection.cpp.s
+.PHONY : ClientConnection.cpp.s
+
 Server.obj: Server.cpp.obj
 .PHONY : Server.obj
 
@@ -634,6 +658,9 @@ help:
 	@echo ... NightlyTest
 	@echo ... NightlyUpdate
 	@echo ... NautilusCoproccesor
+	@echo ... ClientConnection.obj
+	@echo ... ClientConnection.i
+	@echo ... ClientConnection.s
 	@echo ... Server.obj
 	@echo ... Server.i
 	@echo ... Server.s

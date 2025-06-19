@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "E:/CoprocesorCodeForNautilus/ClientConnection.cpp" "CMakeFiles/NautilusCoproccesor.dir/ClientConnection.cpp.obj" "gcc" "CMakeFiles/NautilusCoproccesor.dir/ClientConnection.cpp.obj.d"
   "E:/CoprocesorCodeForNautilus/Server.cpp" "CMakeFiles/NautilusCoproccesor.dir/Server.cpp.obj" "gcc" "CMakeFiles/NautilusCoproccesor.dir/Server.cpp.obj.d"
   "E:/CoprocesorCodeForNautilus/astar.cpp" "CMakeFiles/NautilusCoproccesor.dir/astar.cpp.obj" "gcc" "CMakeFiles/NautilusCoproccesor.dir/astar.cpp.obj.d"
   "E:/CoprocesorCodeForNautilus/main.cpp" "CMakeFiles/NautilusCoproccesor.dir/main.cpp.obj" "gcc" "CMakeFiles/NautilusCoproccesor.dir/main.cpp.obj.d"

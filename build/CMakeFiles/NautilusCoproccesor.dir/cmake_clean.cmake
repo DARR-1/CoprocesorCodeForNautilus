@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/NautilusCoproccesor.dir/ClientConnection.cpp.obj"
+  "CMakeFiles/NautilusCoproccesor.dir/ClientConnection.cpp.obj.d"
   "CMakeFiles/NautilusCoproccesor.dir/Server.cpp.obj"
   "CMakeFiles/NautilusCoproccesor.dir/Server.cpp.obj.d"
   "CMakeFiles/NautilusCoproccesor.dir/astar.cpp.obj"

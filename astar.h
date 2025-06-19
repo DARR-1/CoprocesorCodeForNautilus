@@ -3,7 +3,16 @@
 #include <utility>
 #include <cfloat>
 
-typedef std::pair<int, int> Pair;
+#pragma pack(push, 1)
+struct Pair
+{
+    int first;
+    int second;
+
+    Pair() = default;
+    Pair(int f, int s) : first(f), second(s) {}
+};
+#pragma pack(pop)
 typedef std::pair<double, std::pair<int, int>> pPair;
 
 struct cell

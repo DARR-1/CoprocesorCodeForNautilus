@@ -1,48 +1,43 @@
 #pragma once
 
 #include <string>
-#include <cstring>
-#include <cstdlib>
-
 #ifdef _WIN32
-    #include <winsock2.h>
-    #include <Ws2tcpip.h>
-    #pragma comment(lib, "Ws2_32.lib")
+#include <winsock2.h>
+#include <ws2tcpip.h>
+#pragma comment(lib, "Ws2_32.lib")
 #else
-    #include <sys/types.h>
-    #include <sys/socket.h>
-    #include <netinet/in.h>
-    #include <arpa/inet.h>
-    #include <unistd.h>
-    #include <netdb.h>
-    #include <errno.h>
-
-    #define INVALID_SOCKET (-1)
-    #define SOCKET_ERROR (-1)
-    typedef int SOCKET;
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+#include <netdb.h>
+#define INVALID_SOCKET (-1)
+#define SOCKET_ERROR (-1)
+#define closesocket close
+typedef int SOCKET;
 #endif
+
+#include "ClientConnection.h"
 
 class Server
 {
-public:
-    Server(u_short port, std::string hostname);
-    Server(u_short port);
-    ~Server();
-    int initialize();
-    int listen();
-    int accept();
-    int send(const char *buffer, int length);
-    int receive(char *buffer, int length);
-    int close();
-
 private:
+    SOCKET ListenSocket;
+    std::string hostname;
+    std::string ip;
+    u_short port;
+    sockaddr_in service;
+    int error;
+
 #ifdef _WIN32
     WSADATA wsaData;
 #endif
-    SOCKET ListenSocket, AcceptSocket;
-    u_short port = 27015;
-    std::string hostname;
-    std::string ip;
-    sockaddr_in service;
-    int error;
+
+public:
+    Server(u_short port, std::string hostname = "0.0.0.0");
+    ~Server();
+    int initialize();
+    int listen();
+    int close();
+    ClientConnection accept();
 };

@@ -16,5 +16,11 @@
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -std=c++17 -o CMakeFiles\\NautilusCoproccesor.dir\\Server.cpp.obj -c E:\\CoprocesorCodeForNautilus\\Server.cpp",
   "file": "E:/CoprocesorCodeForNautilus/Server.cpp",
   "output": "CMakeFiles/NautilusCoproccesor.dir/Server.cpp.obj"
+},
+{
+  "directory": "E:/CoprocesorCodeForNautilus/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -std=c++17 -o CMakeFiles\\NautilusCoproccesor.dir\\ClientConnection.cpp.obj -c E:\\CoprocesorCodeForNautilus\\ClientConnection.cpp",
+  "file": "E:/CoprocesorCodeForNautilus/ClientConnection.cpp",
+  "output": "CMakeFiles/NautilusCoproccesor.dir/ClientConnection.cpp.obj"
 }
 ]
