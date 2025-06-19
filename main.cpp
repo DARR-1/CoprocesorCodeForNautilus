@@ -300,7 +300,7 @@ else
                     server.receive(buffer, 200);
                 }
                 std::cout << "Confirmación recibida.\n";
-                strcpy_s(buffer, ""); // Limpiar buffer
+                buffer[0] = '\0'; // Limpiar buffer
 
                 server.send(std::to_string(p.second).c_str(), 200);
 
