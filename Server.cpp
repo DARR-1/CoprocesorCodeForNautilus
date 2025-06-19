@@ -14,6 +14,7 @@
 #include <netdb.h>
 #define INVALID_SOCKET (-1)
 #define SOCKET_ERROR (-1)
+#define closesocket close
 typedef int SOCKET;
 #endif
 
@@ -63,7 +64,11 @@ int Server::initialize()
     service.sin_port = htons(port);
 
     struct addrinfo hints, *result = nullptr;
-    ZeroMemory(&hints, sizeof(hints));
+    #ifdef _WIN32
+ZeroMemory(&hints, sizeof(hints));
+#else
+memset(&hints, 0, sizeof(hints));
+#endif
     hints.ai_family = AF_INET;
 
     error = getaddrinfo(hostname.c_str(), nullptr, &hints, &result);
