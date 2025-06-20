@@ -1,0 +1,8 @@
+[
+{
+  "directory": "E:/CoprocesorCodeForNautilus/Client/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -std=c++17 -o CMakeFiles\\Client.dir\\main.cpp.obj -c E:\\CoprocesorCodeForNautilus\\Client\\main.cpp",
+  "file": "E:/CoprocesorCodeForNautilus/Client/main.cpp",
+  "output": "CMakeFiles/Client.dir/main.cpp.obj"
+}
+]

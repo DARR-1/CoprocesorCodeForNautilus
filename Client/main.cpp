@@ -18,9 +18,19 @@ struct Pair
 int main(int, char **)
 {
     SOCKET clientSocket;
-    int port = 27015;
     WSADATA wsaData;
     WORD wVersionRequested = MAKEWORD(2, 2);
+
+    std::string ip;
+    int port;
+
+    // Solicitar IP y puerto al usuario
+    std::cout << "Ingrese la dirección IP del servidor: ";
+    std::getline(std::cin, ip);
+
+    std::cout << "Ingrese el puerto del servidor: ";
+    std::cin >> port;
+    std::cin.ignore(); // Limpiar el buffer de entrada
 
     if (WSAStartup(wVersionRequested, &wsaData) != 0)
     {
@@ -39,7 +49,7 @@ int main(int, char **)
     sockaddr_in serv{};
     serv.sin_family = AF_INET;
     serv.sin_port = htons(port);
-    InetPton(AF_INET, "192.168.56.1", &serv.sin_addr);
+    InetPton(AF_INET, ip.c_str(), &serv.sin_addr);
 
     if (connect(clientSocket, (SOCKADDR *)&serv, sizeof(serv)) == SOCKET_ERROR)
     {

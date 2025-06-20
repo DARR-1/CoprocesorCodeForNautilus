@@ -34,10 +34,9 @@ private:
 #endif
 
 public:
-    Server(u_short port, std::string hostname = "0.0.0.0");
+    Server(u_short port, std::string hostname = "localhost");
     ~Server();
     int initialize();
     int listen();
-    int close();
     ClientConnection accept();
 };

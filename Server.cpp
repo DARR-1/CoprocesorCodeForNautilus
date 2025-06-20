@@ -83,6 +83,7 @@ ClientConnection Server::accept()
     SOCKET clientSocket = ::accept(ListenSocket, (sockaddr *)&cli, &cliSize);
     if (clientSocket == INVALID_SOCKET)
     {
+        perror("accept() falló"); // Imprime el error específico
         std::cerr << "accept() falló.\n";
         return ClientConnection(INVALID_SOCKET);
     }
@@ -93,16 +94,4 @@ ClientConnection Server::accept()
     std::cout << "Conexión aceptada de " << clientIp << ":" << clientPort << "\n";
 
     return ClientConnection(clientSocket);
-}
-
-int Server::close()
-{
-#ifdef _WIN32
-    closesocket(ListenSocket);
-    WSACleanup();
-#else
-    ::close(ListenSocket);
-#endif
-    printf("Server closed.\n");
-    return 0;
 }

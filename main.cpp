@@ -6,6 +6,7 @@
 #include <thread>
 #include <string>
 #include <cstring>
+#include <cstdlib> // Necesario para exit()
 
 #include "astar.h"
 #include "Server.h"
@@ -16,7 +17,7 @@
 using Grid = std::vector<std::vector<int>>;
 using Path = std::vector<Pair>;
 
-int handleClient(ClientConnection client, const Grid &grid, Server &server)
+void handleClient(ClientConnection client, const Grid &grid)
 {
     char buffer[200] = "";
 
@@ -103,14 +104,14 @@ int handleClient(ClientConnection client, const Grid &grid, Server &server)
         }
         else if (strcmp(buffer, "close") == 0)
         {
+
             client.close();
-            server.close();
             std::cout << "Conexión cerrada por el cliente.\n";
-            return 0;
+            exit(0); // Detiene el programa
         }
         else if (strcmp(buffer, "exit") == 0)
         {
-            break;
+            client.send("ok", 200);
         }
         else
         {
@@ -165,7 +166,7 @@ int main()
         ClientConnection client = server.accept();
         if (client.getSocket() != -1)
         {
-            std::thread clientThread(handleClient, std::move(client), std::ref(grid), std::ref(server));
+            std::thread clientThread(handleClient, std::move(client), std::ref(grid));
             clientThread.detach();
         }
     }
