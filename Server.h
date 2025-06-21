@@ -34,7 +34,7 @@ private:
 #endif
 
 public:
-    Server(u_short port, std::string hostname = "");
+    Server(u_short port, std::string hostname = "127.0.0.1");
     ~Server();
     int initialize();
     int listen();
