@@ -4,16 +4,9 @@
 #include <string>
 #include <vector>
 #include <cstdlib>
+#include <algorithm> // <-- necesario para std::all_of
 
 #pragma comment(lib, "ws2_32.lib")
-
-#pragma pack(push, 1)
-struct Pair
-{
-    int first;
-    int second;
-};
-#pragma pack(pop)
 
 bool sendMessage(SOCKET sock, const std::string &msg)
 {
@@ -135,46 +128,30 @@ int main(int, char **)
             sendMessage(clientSocket, input);
             receiveMessage(clientSocket, msg);
 
-            int count = 0;
-            if (recv(clientSocket, reinterpret_cast<char *>(&count), sizeof(int), 0) <= 0)
-            {
-                std::cerr << "Error al recibir tamaño del path.\n";
-                continue;
-            }
-
-            if (count == 0)
+            while (true)
             {
                 receiveMessage(clientSocket, msg);
-                onCmd = false;
-                continue;
-            }
+                if (msg == "end")
+                    break;
 
-            int size = 0;
-            recv(clientSocket, reinterpret_cast<char *>(&size), sizeof(int), 0);
-            int totalBytes = count * sizeof(Pair);
-
-            std::cout << "Recibiendo " << count << " pares (" << totalBytes << " bytes)\n";
-
-            std::vector<char> rawPath(totalBytes);
-            int received = 0;
-            while (received < totalBytes)
-            {
-                int bytes = recv(clientSocket, rawPath.data() + received, totalBytes - received, 0);
-                if (bytes <= 0)
+                if (!std::all_of(msg.begin(), msg.end(), ::isdigit) && !(msg[0] == '-' && std::isdigit(msg[1])))
                 {
-                    std::cerr << "Error al recibir los datos binarios.\n";
+                    std::cerr << "Mensaje inesperado recibido: " << msg << "\n";
+                    break; // o continúa, dependiendo de tu lógica
+                }
+
+                int x = std::stoi(msg);
+
+                receiveMessage(clientSocket, msg);
+                if (!std::all_of(msg.begin(), msg.end(), ::isdigit) && !(msg[0] == '-' && std::isdigit(msg[1])))
+                {
+                    std::cerr << "Mensaje inesperado recibido: " << msg << "\n";
                     break;
                 }
-                received += bytes;
-            }
 
-            std::vector<Pair> path(count);
-            memcpy(path.data(), rawPath.data(), totalBytes);
+                int y = std::stoi(msg);
 
-            std::cout << "Path recibido con " << path.size() << " puntos:\n";
-            for (const auto &point : path)
-            {
-                std::cout << "(" << point.first << ", " << point.second << ")\n";
+                std::cout << "Path: x" << x << " y" << y << "\n";
             }
 
             sendMessage(clientSocket, "end");

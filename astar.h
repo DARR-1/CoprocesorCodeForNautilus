@@ -9,10 +9,14 @@ struct Pair
     int first;
     int second;
 
-    Pair() = default;
+    // Constructor necesario
     Pair(int f, int s) : first(f), second(s) {}
+
+    // Constructor por defecto (necesario para vector<>, etc.)
+    Pair() : first(0), second(0) {}
 };
 #pragma pack(pop)
+
 typedef std::pair<double, std::pair<int, int>> pPair;
 
 struct cell
@@ -23,9 +27,10 @@ struct cell
     // f = g + h
     double f, g, h;
 };
-#define QUALITY 1 / 2
-#define ROW ((634 / 2) * QUALITY) + 1
-#define COL ((1381 / 2) * QUALITY) + 1
+
+constexpr double QUALITY = 0.5;
+constexpr int ROW = static_cast<int>((634.0 / 2.0) * QUALITY) + 1;
+constexpr int COL = static_cast<int>((1381.0 / 2.0) * QUALITY) + 1;
 
 class AStar
 {

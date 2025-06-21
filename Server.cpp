@@ -159,9 +159,11 @@ void Server::handleClient(ClientConnection client, const Grid &grid)
         if (!receiveMessage(client, msg))
         {
             std::cerr << "\033[31mError: Conexión cerrada o fallo en la recepción del mensaje.\033[0m\n";
-            std::cout << "\n\033[33m=============Conexión cerrada=============\033[37m\n\n";
+            std::cout << "\n\033[33m=============Conexión cerrada con " << client.getName() << "=============\033[37m\n\n";
             break;
         }
+
+        std::cout << "\n\033[33m=============Iniciando comando: " << msg << "=============\033[37m\n\n";
 
         if (msg == "pathfind")
         {
@@ -173,7 +175,7 @@ void Server::handleClient(ClientConnection client, const Grid &grid)
                 std::cerr << "\033[31mError: Fallo al recibir la posición inicial.\033[0m\n";
                 break;
             }
-            src.second = round(atof(msg.c_str()) * QUALITY);
+            src.second = round((std::stod(msg.c_str()) / 0.0254) * QUALITY);
             sendMessage(client, "ok");
 
             if (!receiveMessage(client, msg))
@@ -181,7 +183,7 @@ void Server::handleClient(ClientConnection client, const Grid &grid)
                 std::cerr << "\033[31mError: Fallo al recibir la posición inicial (Y).\033[0m\n";
                 break;
             }
-            src.first = ROW - round(atof(msg.c_str()) * QUALITY) - 1;
+            src.first = ROW - round((std::stod(msg.c_str()) / 0.0254) * QUALITY) - 1;
             sendMessage(client, "ok");
 
             if (!receiveMessage(client, msg))
@@ -189,7 +191,7 @@ void Server::handleClient(ClientConnection client, const Grid &grid)
                 std::cerr << "\033[31mError: Fallo al recibir la posición final.\033[0m\n";
                 break;
             }
-            dest.second = round(atof(msg.c_str()) * QUALITY);
+            dest.second = round((std::stod(msg.c_str()) / 0.0254) * QUALITY);
             sendMessage(client, "ok");
 
             if (!receiveMessage(client, msg))
@@ -197,7 +199,9 @@ void Server::handleClient(ClientConnection client, const Grid &grid)
                 std::cerr << "\033[31mError: Fallo al recibir la posición final (Y).\033[0m\n";
                 break;
             }
-            dest.first = ROW - round(atof(msg.c_str()) * QUALITY) - 1;
+            dest.first = ROW - round((std::stod(msg.c_str()) / 0.0254) * QUALITY) - 1;
+            std::cout << "Posición inicial: (" << src.first << ", " << src.second << ")\n";
+            std::cout << "Posición final: (" << dest.first << ", " << dest.second << ")\n";
             sendMessage(client, "ok");
 
             auto start = std::chrono::system_clock::now().time_since_epoch().count();
@@ -205,12 +209,13 @@ void Server::handleClient(ClientConnection client, const Grid &grid)
 
             if (!path.empty())
             {
-                int count = path.size();
-                int sizeInBytes = path.size() * sizeof(Pair);
 
-                client.send(reinterpret_cast<const char *>(&count), sizeof(int));
-                client.send(reinterpret_cast<const char *>(&sizeInBytes), sizeof(int));
-                client.send(reinterpret_cast<const char *>(path.data()), sizeInBytes);
+                for (const auto &point : path)
+                {
+                    sendMessage(client, std::to_string((0.0254 * point.second) / QUALITY));
+                    sendMessage(client, std::to_string(-((0.0254 * (point.first + 1 - ROW)) / QUALITY)));
+                }
+                sendMessage(client, "end");
 
                 do
                 {

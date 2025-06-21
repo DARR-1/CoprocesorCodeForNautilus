@@ -16,8 +16,10 @@ CMakeFiles/Client.dir/main.cpp.obj: E:/CoprocesorCodeForNautilus/Client/main.cpp
   C:/msys64/ucrt64/include/basetsd.h \
   C:/msys64/ucrt64/include/bcrypt.h \
   C:/msys64/ucrt64/include/bemapiset.h \
+  C:/msys64/ucrt64/include/c++/15.1.0/algorithm \
   C:/msys64/ucrt64/include/c++/15.1.0/backward/binders.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bit \
+  C:/msys64/ucrt64/include/c++/15.1.0/bits/algorithmfwd.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/alloc_traits.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/allocator.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/basic_ios.h \
@@ -59,20 +61,24 @@ CMakeFiles/Client.dir/main.cpp.obj: E:/CoprocesorCodeForNautilus/Client/main.cpp
   C:/msys64/ucrt64/include/c++/15.1.0/bits/refwrap.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/requires_hosted.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/std_abs.h \
+  C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_algo.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_algobase.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_bvector.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_construct.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_function.h \
+  C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_heap.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_iterator.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_iterator_base_funcs.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_iterator_base_types.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_pair.h \
+  C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_tempbuf.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_uninitialized.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_vector.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/streambuf.tcc \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/streambuf_iterator.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/string_view.tcc \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/stringfwd.h \
+  C:/msys64/ucrt64/include/c++/15.1.0/bits/uniform_int_dist.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/uses_allocator.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/uses_allocator_args.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/utility.h \
@@ -102,6 +108,8 @@ CMakeFiles/Client.dir/main.cpp.obj: E:/CoprocesorCodeForNautilus/Client/main.cpp
   C:/msys64/ucrt64/include/c++/15.1.0/istream \
   C:/msys64/ucrt64/include/c++/15.1.0/new \
   C:/msys64/ucrt64/include/c++/15.1.0/ostream \
+  C:/msys64/ucrt64/include/c++/15.1.0/pstl/execution_defs.h \
+  C:/msys64/ucrt64/include/c++/15.1.0/pstl/glue_algorithm_defs.h \
   C:/msys64/ucrt64/include/c++/15.1.0/pstl/pstl_config.h \
   C:/msys64/ucrt64/include/c++/15.1.0/stdexcept \
   C:/msys64/ucrt64/include/c++/15.1.0/stdlib.h \
@@ -445,13 +453,11 @@ C:/msys64/ucrt64/include/_bsd_types.h:
 
 C:/msys64/ucrt64/include/_mingw_stdarg.h:
 
-C:/msys64/ucrt64/include/c++/15.1.0/ext/atomicity.h:
-
-C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_function.h:
-
 C:/msys64/ucrt64/include/realtimeapiset.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/bits/basic_ios.h:
+
+C:/msys64/ucrt64/include/c++/15.1.0/bits/algorithmfwd.h:
 
 C:/msys64/ucrt64/include/_mingw_secapi.h:
 
@@ -493,6 +499,8 @@ C:/msys64/ucrt64/include/psdk_inc/_ip_mreq1.h:
 
 C:/msys64/ucrt64/include/apisetcconv.h:
 
+C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_tempbuf.h:
+
 C:/msys64/ucrt64/include/basetsd.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_construct.h:
@@ -513,13 +521,11 @@ C:/msys64/ucrt64/include/c++/15.1.0/cwchar:
 
 C:/msys64/ucrt64/include/bcrypt.h:
 
+C:/msys64/ucrt64/include/c++/15.1.0/algorithm:
+
 C:/msys64/ucrt64/include/c++/15.1.0/bits/new_allocator.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/backward/binders.h:
-
-C:/msys64/ucrt64/include/c++/15.1.0/debug/assertions.h:
-
-C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_iterator.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/bits/hash_bytes.h:
 
@@ -583,6 +589,8 @@ C:/msys64/ucrt64/include/c++/15.1.0/bits/cxxabi_forced.h:
 
 C:/msys64/ucrt64/include/winnetwk.h:
 
+C:/msys64/ucrt64/include/c++/15.1.0/pstl/execution_defs.h:
+
 C:/msys64/ucrt64/include/c++/15.1.0/bits/cxxabi_init_exception.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/bits/string_view.tcc:
@@ -610,6 +618,8 @@ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/mwaitintrin.h:
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/avx512vp2intersectintrin.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/bits/istream.tcc:
+
+C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_algo.h:
 
 C:/msys64/ucrt64/include/tvout.h:
 
@@ -645,6 +655,18 @@ C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_vector.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_bvector.h:
 
+C:/msys64/ucrt64/include/c++/15.1.0/ext/atomicity.h:
+
+C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_function.h:
+
+C:/msys64/ucrt64/include/mmeapi.h:
+
+C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_heap.h:
+
+C:/msys64/ucrt64/include/c++/15.1.0/debug/assertions.h:
+
+C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_iterator.h:
+
 C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_iterator_base_funcs.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/amxbf16intrin.h:
@@ -666,6 +688,8 @@ C:/msys64/ucrt64/include/c++/15.1.0/bits/streambuf.tcc:
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/x86gprintrin.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/bits/stringfwd.h:
+
+C:/msys64/ucrt64/include/c++/15.1.0/bits/uniform_int_dist.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/avx512vbmivlintrin.h:
 
@@ -764,6 +788,8 @@ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/avx10_2-512convertint
 C:/msys64/ucrt64/include/mmiscapi.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/ostream:
+
+C:/msys64/ucrt64/include/c++/15.1.0/pstl/glue_algorithm_defs.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/typeinfo:
 
@@ -914,8 +940,6 @@ C:/msys64/ucrt64/include/minwinbase.h:
 C:/msys64/ucrt64/include/winperf.h:
 
 C:/msys64/ucrt64/include/minwindef.h:
-
-C:/msys64/ucrt64/include/mmeapi.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/prfchiintrin.h:
 
