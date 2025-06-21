@@ -17,113 +17,6 @@
 using Grid = std::vector<std::vector<int>>;
 using Path = std::vector<Pair>;
 
-void handleClient(ClientConnection client, const Grid &grid)
-{
-    char buffer[200] = "";
-
-    while (true)
-    {
-        int ret = client.receive(buffer, 200);
-        if (ret <= 0)
-        {
-            std::cerr << "Conexión cerrada o error.\n";
-            break;
-        }
-
-        std::cout << "Received from client: " << buffer << std::endl;
-
-        if (strcmp(buffer, "pathfind") == 0)
-        {
-            client.send("ok", 200);
-            Pair src, dest;
-
-            client.receive(buffer, 200);
-            src.second = round(atof(buffer) * QUALITY);
-            client.send("ok", 200);
-
-            client.receive(buffer, 200);
-            src.first = ROW - round(atof(buffer) * QUALITY) - 1;
-            client.send("ok", 200);
-
-            client.receive(buffer, 200);
-            dest.second = round(atof(buffer) * QUALITY);
-            client.send("ok", 200);
-
-            client.receive(buffer, 200);
-            dest.first = ROW - round(atof(buffer) * QUALITY) - 1;
-            client.send("ok", 200);
-
-            auto start = std::chrono::system_clock::now().time_since_epoch().count();
-            auto path = aStarSearch(grid, src, dest);
-
-            if (!path.empty())
-            {
-                client.send(std::to_string(path.size()).c_str(), 200);
-                client.send(std::to_string(sizeof(Pair) * path.size()).c_str(), 200);
-                client.send(reinterpret_cast<const char *>(path.data()), path.size() * sizeof(Pair));
-
-                client.receive(buffer, 200);
-                while (strcmp(buffer, "end") != 0)
-                    client.receive(buffer, 200);
-
-                std::cout << "Path enviado correctamente al cliente.\n";
-            }
-            else
-            {
-                client.send("no path found", 200);
-            }
-
-            auto end = std::chrono::system_clock::now().time_since_epoch().count();
-            client.send(("Tiempo de ejecución: " + std::to_string((end - start) / 1000000) + " ms\n").c_str(), 200);
-        }
-        else if (strcmp(buffer, "test") == 0)
-        {
-            client.send("ok", 200);
-            std::cout << "Test request received.\n";
-
-            buffer[0] = '\0'; // Limpiar buffer
-            if (client.receive(buffer, 200) == -1)
-            {
-                std::cerr << "Error receiving test data.\n";
-                continue;
-            }
-            while (strcmp(buffer, "ok") != 0)
-            {
-                client.receive(buffer, 200);
-                static bool printed = false;
-                if (!printed)
-                {
-                    std::cout << "Esperando confirmación del cliente...\n";
-                    printed = true;
-                }
-            }
-            std::cout << "Confirmación recibida.\n";
-
-            client.send("test ok", 200);
-            std::cout << "Test response sent.\n";
-        }
-        else if (strcmp(buffer, "close") == 0)
-        {
-
-            client.close();
-            std::cout << "Conexión cerrada por el cliente.\n";
-            exit(0); // Detiene el programa
-        }
-        else if (strcmp(buffer, "exit") == 0)
-        {
-            client.send("ok", 200);
-        }
-        else
-        {
-            client.send("unknown command", 200);
-        }
-
-        buffer[0] = '\0';
-    }
-
-    client.close();
-}
-
 int main()
 {
     Server server(27015);
@@ -166,7 +59,7 @@ int main()
         ClientConnection client = server.accept();
         if (client.getSocket() != -1)
         {
-            std::thread clientThread(handleClient, std::move(client), std::ref(grid));
+            std::thread clientThread(&Server::handleClient, &server, std::move(client), std::ref(grid));
             clientThread.detach();
         }
     }

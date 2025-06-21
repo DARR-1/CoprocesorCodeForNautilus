@@ -1,7 +1,24 @@
-#include "Server.h"
 #include <iostream>
+#include <vector>
+#include <cmath>
+#include <fstream>
+#include <chrono>
+#include <thread>
+#include <string>
+#include <cstring>
+#include <cstdlib> // Necesario para exit()
+
+#include "astar.h"
+#include "Server.h"
+#include "ClientConnection.h"
+
+using Grid = std::vector<std::vector<int>>;
+using Path = std::vector<Pair>;
 
 Server::~Server() {}
+
+using Grid = std::vector<std::vector<int>>;
+using Path = std::vector<Pair>;
 
 Server::Server(u_short port, std::string hostname)
 {
@@ -62,6 +79,9 @@ int Server::initialize()
         return 1;
     }
 
+    // Imprimir la IP del servidor
+    std::cout << "Servidor inicializado con IP: " << ip << "\n";
+
     return 0;
 }
 
@@ -91,7 +111,167 @@ ClientConnection Server::accept()
     char clientIp[INET_ADDRSTRLEN];
     inet_ntop(AF_INET, &cli.sin_addr, clientIp, sizeof(clientIp));
     u_short clientPort = ntohs(cli.sin_port);
-    std::cout << "Conexión aceptada de " << clientIp << ":" << clientPort << "\n";
+    std::cout << "\n\033[33m=============Conexión aceptada de " << clientIp << ":" << clientPort << "=============\033[37m\n\n";
 
     return ClientConnection(clientSocket);
+}
+
+void sendMessage(ClientConnection &client, const std::string &msg)
+{
+    int len = msg.size();
+    client.send(reinterpret_cast<const char *>(&len), sizeof(int));
+    client.send(msg.c_str(), len);
+}
+
+bool receiveMessage(ClientConnection &client, std::string &msg)
+{
+    int len = 0;
+    if (client.receive(reinterpret_cast<char *>(&len), sizeof(int)) <= 0)
+    {
+        std::cerr << "\033[31mError: Fallo al recibir el tamaño del mensaje.\033[0m\n";
+        return false;
+    }
+
+    if (len <= 0 || len > 10000)
+    {
+        std::cerr << "\033[31mError: Tamaño del mensaje inválido (" << len << ").\033[0m\n";
+        return false; // Sanity check
+    }
+
+    std::vector<char> buffer(len + 1, 0);
+    if (client.receive(buffer.data(), len) <= 0)
+    {
+        std::cerr << "\033[31mError: Fallo al recibir el contenido del mensaje.\033[0m\n";
+        return false;
+    }
+
+    msg = buffer.data();
+
+    return true;
+}
+
+void Server::handleClient(ClientConnection client, const Grid &grid)
+{
+    std::string msg;
+
+    while (true)
+    {
+        if (!receiveMessage(client, msg))
+        {
+            std::cerr << "\033[31mError: Conexión cerrada o fallo en la recepción del mensaje.\033[0m\n";
+            std::cout << "\n\033[33m=============Conexión cerrada=============\033[37m\n\n";
+            break;
+        }
+
+        if (msg == "pathfind")
+        {
+            sendMessage(client, "ok");
+            Pair src, dest;
+
+            if (!receiveMessage(client, msg))
+            {
+                std::cerr << "\033[31mError: Fallo al recibir la posición inicial.\033[0m\n";
+                break;
+            }
+            src.second = round(atof(msg.c_str()) * QUALITY);
+            sendMessage(client, "ok");
+
+            if (!receiveMessage(client, msg))
+            {
+                std::cerr << "\033[31mError: Fallo al recibir la posición inicial (Y).\033[0m\n";
+                break;
+            }
+            src.first = ROW - round(atof(msg.c_str()) * QUALITY) - 1;
+            sendMessage(client, "ok");
+
+            if (!receiveMessage(client, msg))
+            {
+                std::cerr << "\033[31mError: Fallo al recibir la posición final.\033[0m\n";
+                break;
+            }
+            dest.second = round(atof(msg.c_str()) * QUALITY);
+            sendMessage(client, "ok");
+
+            if (!receiveMessage(client, msg))
+            {
+                std::cerr << "\033[31mError: Fallo al recibir la posición final (Y).\033[0m\n";
+                break;
+            }
+            dest.first = ROW - round(atof(msg.c_str()) * QUALITY) - 1;
+            sendMessage(client, "ok");
+
+            auto start = std::chrono::system_clock::now().time_since_epoch().count();
+            auto path = aStarSearch(grid, src, dest);
+
+            if (!path.empty())
+            {
+                int count = path.size();
+                int sizeInBytes = path.size() * sizeof(Pair);
+
+                client.send(reinterpret_cast<const char *>(&count), sizeof(int));
+                client.send(reinterpret_cast<const char *>(&sizeInBytes), sizeof(int));
+                client.send(reinterpret_cast<const char *>(path.data()), sizeInBytes);
+
+                do
+                {
+                    if (!receiveMessage(client, msg))
+                        break;
+                } while (msg != "end");
+
+                std::cout << "Path enviado correctamente al cliente.\n";
+            }
+            else
+            {
+                std::cerr << "\033[31mError: No se encontró un camino.\033[0m\n";
+                sendMessage(client, "no path found");
+            }
+
+            auto end = std::chrono::system_clock::now().time_since_epoch().count();
+            std::string execMsg = "Tiempo de ejecución: " + std::to_string((end - start) / 1000000) + " ms";
+            sendMessage(client, execMsg);
+        }
+        else if (msg == "test")
+        {
+            sendMessage(client, "ok");
+            std::cout << "Test request received.\n";
+
+            if (!receiveMessage(client, msg))
+            {
+                std::cerr << "\033[31mError: Fallo al recibir datos de prueba.\033[0m\n";
+                continue;
+            }
+            while (msg != "ok")
+            {
+                if (!receiveMessage(client, msg))
+                    break;
+                static bool printed = false;
+                if (!printed)
+                {
+                    std::cout << "Esperando confirmación del cliente...\n";
+                    printed = true;
+                }
+            }
+            std::cout << "Confirmación recibida.\n";
+
+            sendMessage(client, "test ok");
+            std::cout << "Test response sent.\n";
+        }
+        else if (msg == "close")
+        {
+            client.close();
+            std::cout << "Conexión cerrada por el cliente.\n";
+            exit(0);
+        }
+        else if (msg == "exit")
+        {
+            sendMessage(client, "ok");
+        }
+        else
+        {
+            sendMessage(client, "unknown command");
+        }
+        std::cout << "\n\033[33m=============Finishing command=============\n\n\033[37m";
+    }
+
+    client.close();
 }

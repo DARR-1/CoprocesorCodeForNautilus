@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="Win32-mingw32-make"
+	BuildStamp="20250621-0143-Experimental"
+	Name="DARR"
+	Generator="ctest-3.31.0"
+	CompilerName="C:/msys64/ucrt64/bin/g++.exe"
+	CompilerVersion="15.1.0"
+	OSName="Windows"
+	Hostname="DARR"
+	OSRelease=" Professional"
+	OSVersion=" (Build 22631)"
+	OSPlatform="AMD64"
+	Is64Bits="1"
+	VendorString="AuthenticAMD"
+	VendorID="Advanced Micro Devices"
+	FamilyID="15"
+	ModelID="0"
+	ModelName="AMD Ryzen 7 5700G with Radeon Graphics         "
+	ProcessorCacheSize="64"
+	NumberOfLogicalCPU="16"
+	NumberOfPhysicalCPU="8"
+	TotalVirtualMemory="28395"
+	TotalPhysicalMemory="24368"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="4299"
+	>
+	<Testing>
+		<StartDateTime>Jun 21 00:44 Hora est[NON-UTF-8-BYTE-0xE1]ndar central (M[NON-UTF-8-BYTE-0xE9]xico)</StartDateTime>
+		<StartTestTime>1750488297</StartTestTime>
+		<TestList/>
+		<EndDateTime>Jun 21 00:44 Hora est[NON-UTF-8-BYTE-0xE1]ndar central (M[NON-UTF-8-BYTE-0xE9]xico)</EndDateTime>
+		<EndTestTime>1750488297</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

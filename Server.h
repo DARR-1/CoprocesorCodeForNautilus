@@ -34,9 +34,10 @@ private:
 #endif
 
 public:
-    Server(u_short port, std::string hostname = "localhost");
+    Server(u_short port, std::string hostname = "");
     ~Server();
     int initialize();
     int listen();
     ClientConnection accept();
+    void handleClient(ClientConnection client, const std::vector<std::vector<int>> &grid);
 };
