@@ -82,6 +82,7 @@ CMakeFiles/NautilusCoproccesor.dir/ClientConnection.cpp.obj
  C:/msys64/ucrt64/include/c++/15.1.0/cstddef
  C:/msys64/ucrt64/include/c++/15.1.0/cstdio
  C:/msys64/ucrt64/include/c++/15.1.0/cstdlib
+ C:/msys64/ucrt64/include/c++/15.1.0/cstring
  C:/msys64/ucrt64/include/c++/15.1.0/cwchar
  C:/msys64/ucrt64/include/c++/15.1.0/cwctype
  C:/msys64/ucrt64/include/c++/15.1.0/debug/assertions.h

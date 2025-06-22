@@ -6,7 +6,11 @@
 #include <thread>
 #include <string>
 #include <cstring>
-#include <cstdlib> // Necesario para exit()
+#include <cstdlib> // exit(), system()
+#include <cstdio>  // popen()
+#ifdef __unix__
+#include <unistd.h> // para getuid()
+#endif
 
 #include "astar.h"
 #include "Server.h"
@@ -17,8 +21,75 @@
 using Grid = std::vector<std::vector<int>>;
 using Path = std::vector<Pair>;
 
-int main()
+// Ejecutar figlet (popen variante cruzada)
+void printFigletTitle(const std::string &title)
 {
+#ifdef _WIN32
+    FILE *pipe = _popen(("figlet \"" + title + "\"").c_str(), "r");
+#else
+    system("sudo apt install figlet");
+    FILE *pipe = popen(("figlet \"" + title + "\"").c_str(), "r");
+#endif
+    if (!pipe)
+        return;
+
+    char buffer[128];
+    while (fgets(buffer, sizeof(buffer), pipe) != nullptr)
+    {
+        std::cout << "\033[1;35m" << buffer << "\033[0m";
+    }
+
+#ifdef _WIN32
+    _pclose(pipe);
+#else
+    pclose(pipe);
+#endif
+}
+
+int main(int argc, char *argv[])
+{
+
+    {
+#ifdef _WIN32
+        // Forzar consola UTF-8
+        system("chcp 65001 > nul");
+#else
+        if (getuid() != 0)
+        {
+            std::cout << "Requiere permisos de superusuario. Intentando relanzar con sudo...\n";
+
+            // Construir el comando: sudo + ruta del ejecutable + argumentos
+            std::string cmd = "sudo ";
+            for (int i = 0; i < argc; ++i)
+            {
+                cmd += "\"";
+                cmd += argv[i];
+                cmd += "\" ";
+            }
+
+            int result = system(cmd.c_str());
+            return result;
+        }
+
+        std::cout << "Ejecutando con permisos de root.\n";
+#endif
+
+        const std::string reset = "\033[0m";
+        const std::string bold = "\033[1m";
+        const std::string cyan = "\033[36m";
+
+        std::cout << bold << cyan;
+        std::cout << "\n============================================================\n";
+        std::cout << "\033[1;32m=                                                          =\n";
+        std::cout << "\033[1;32m=              INICIANDO CODIGO COPROCESADOR               =\n";
+        std::cout << "\033[1;32m=                       by: André 🍐                       =\n";
+        std::cout << "\033[1;32m=                                                          =\n";
+        std::cout << bold << cyan;
+        std::cout << "============================================================\n\n";
+        std::cout << reset;
+        printFigletTitle("Nautilus 4010");
+    }
+
     Server server(27015);
     if (server.initialize() != 0 || server.listen() != 0)
         return 1;
@@ -54,7 +125,7 @@ int main()
 
     while (true)
     {
-        std::cout << "Esperando nuevo cliente...\n";
+        std::cout << "\n🟢 \033[1;32mEsperando nuevo cliente...\033[0m\n";
 
         ClientConnection client = server.accept();
         if (client.getSocket() != -1)

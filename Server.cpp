@@ -26,6 +26,16 @@ Server::Server(u_short port, std::string hostname)
     this->hostname = hostname;
 }
 
+void printSlow(const std::string &text, int delay_ms = 20)
+{
+    for (char c : text)
+    {
+        std::cout << c << std::flush;
+        std::this_thread::sleep_for(std::chrono::milliseconds(delay_ms));
+    }
+    std::cout << std::endl;
+}
+
 int Server::initialize()
 {
 #ifdef _WIN32
@@ -79,8 +89,7 @@ int Server::initialize()
         return 1;
     }
 
-    // Imprimir la IP del servidor
-    std::cout << "Servidor inicializado con IP: " << ip << "\n";
+    printSlow("\033[1;32m🚦 Servidor inicializado con IP: " + ip + "\033[0m\n");
 
     return 0;
 }
@@ -89,10 +98,10 @@ int Server::listen()
 {
     if (::listen(ListenSocket, SOMAXCONN) == SOCKET_ERROR)
     {
-        std::cerr << "listen() failed.\n";
+        std::cerr << "\033[1;31mlisten() failed.\033[0m\n";
         return 1;
     }
-    std::cout << "Servidor escuchando en puerto " << port << "\n";
+    printSlow("\033[1;34m👂 Servidor escuchando en puerto " + std::to_string(port) + "\033[0m\n");
     return 0;
 }
 
@@ -111,7 +120,7 @@ ClientConnection Server::accept()
     char clientIp[INET_ADDRSTRLEN];
     inet_ntop(AF_INET, &cli.sin_addr, clientIp, sizeof(clientIp));
     u_short clientPort = ntohs(cli.sin_port);
-    std::cout << "\n\033[33m=============Conexión aceptada de " << clientIp << ":" << clientPort << "=============\033[37m\n\n";
+    std::cout << "\n\033[33m=============🛜 Conexión aceptada de " << clientIp << ":" << clientPort << "=============\033[37m\n\n";
 
     return ClientConnection(clientSocket);
 }
@@ -128,20 +137,20 @@ bool receiveMessage(ClientConnection &client, std::string &msg)
     int len = 0;
     if (client.receive(reinterpret_cast<char *>(&len), sizeof(int)) <= 0)
     {
-        std::cerr << "\033[31mError: Fallo al recibir el tamaño del mensaje.\033[0m\n";
+        std::cerr << "\033[31m❌ Error: Fallo al recibir el tamaño del mensaje.\033[0m\n";
         return false;
     }
 
     if (len <= 0 || len > 10000)
     {
-        std::cerr << "\033[31mError: Tamaño del mensaje inválido (" << len << ").\033[0m\n";
+        std::cerr << "\033[31m❌ Error: Tamaño del mensaje inválido (" << len << ").\033[0m\n";
         return false; // Sanity check
     }
 
     std::vector<char> buffer(len + 1, 0);
     if (client.receive(buffer.data(), len) <= 0)
     {
-        std::cerr << "\033[31mError: Fallo al recibir el contenido del mensaje.\033[0m\n";
+        std::cerr << "\033[31m❌ Error: Fallo al recibir el contenido del mensaje.\033[0m\n";
         return false;
     }
 
@@ -158,12 +167,12 @@ void Server::handleClient(ClientConnection client, const Grid &grid)
     {
         if (!receiveMessage(client, msg))
         {
-            std::cerr << "\033[31mError: Conexión cerrada o fallo en la recepción del mensaje.\033[0m\n";
-            std::cout << "\n\033[33m=============Conexión cerrada con " << client.getName() << "=============\033[37m\n\n";
+            std::cerr << "\033[31m❌ Error: Conexión cerrada o fallo en la recepción del mensaje.\033[0m\n";
+            std::cout << "\n\033[33m=============🛜 Conexión cerrada con " << client.getName() << "=============\033[37m\n\n";
             break;
         }
 
-        std::cout << "\n\033[33m=============Iniciando comando: " << msg << "=============\033[37m\n\n";
+        std::cout << "\n\033[33m=============💻 Iniciando comando: " << msg << "=============\033[37m\n\n";
 
         if (msg == "pathfind")
         {
@@ -172,7 +181,7 @@ void Server::handleClient(ClientConnection client, const Grid &grid)
 
             if (!receiveMessage(client, msg))
             {
-                std::cerr << "\033[31mError: Fallo al recibir la posición inicial.\033[0m\n";
+                std::cerr << "\033[31m❌ Error: Fallo al recibir la posición inicial.\033[0m\n";
                 break;
             }
             src.second = round((std::stod(msg.c_str()) / 0.0254) * QUALITY);
@@ -180,7 +189,7 @@ void Server::handleClient(ClientConnection client, const Grid &grid)
 
             if (!receiveMessage(client, msg))
             {
-                std::cerr << "\033[31mError: Fallo al recibir la posición inicial (Y).\033[0m\n";
+                std::cerr << "\033[31m❌ Error: Fallo al recibir la posición inicial (Y).\033[0m\n";
                 break;
             }
             src.first = ROW - round((std::stod(msg.c_str()) / 0.0254) * QUALITY) - 1;
@@ -188,7 +197,7 @@ void Server::handleClient(ClientConnection client, const Grid &grid)
 
             if (!receiveMessage(client, msg))
             {
-                std::cerr << "\033[31mError: Fallo al recibir la posición final.\033[0m\n";
+                std::cerr << "\033[31m❌ Error: Fallo al recibir la posición final.\033[0m\n";
                 break;
             }
             dest.second = round((std::stod(msg.c_str()) / 0.0254) * QUALITY);
@@ -196,7 +205,7 @@ void Server::handleClient(ClientConnection client, const Grid &grid)
 
             if (!receiveMessage(client, msg))
             {
-                std::cerr << "\033[31mError: Fallo al recibir la posición final (Y).\033[0m\n";
+                std::cerr << "\033[31m❌ Error: Fallo al recibir la posición final (Y).\033[0m\n";
                 break;
             }
             dest.first = ROW - round((std::stod(msg.c_str()) / 0.0254) * QUALITY) - 1;
@@ -227,7 +236,7 @@ void Server::handleClient(ClientConnection client, const Grid &grid)
             }
             else
             {
-                std::cerr << "\033[31mError: No se encontró un camino.\033[0m\n";
+                std::cerr << "\033[31m❌ Error: No se encontró un camino.\033[0m\n";
                 sendMessage(client, "no path found");
             }
 
@@ -242,7 +251,7 @@ void Server::handleClient(ClientConnection client, const Grid &grid)
 
             if (!receiveMessage(client, msg))
             {
-                std::cerr << "\033[31mError: Fallo al recibir datos de prueba.\033[0m\n";
+                std::cerr << "\033[31m❌ Error: Fallo al recibir datos de prueba.\033[0m\n";
                 continue;
             }
             while (msg != "ok")
@@ -275,7 +284,7 @@ void Server::handleClient(ClientConnection client, const Grid &grid)
         {
             sendMessage(client, "unknown command");
         }
-        std::cout << "\n\033[33m=============Finishing command=============\n\n\033[37m";
+        std::cout << "\n\033[33m=============🛑 Finishing command=============\n\n\033[37m";
     }
 
     client.close();

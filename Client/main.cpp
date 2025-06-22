@@ -39,8 +39,46 @@ bool receiveMessage(SOCKET sock, std::string &msg)
     return true;
 }
 
+void printFigletTitle(const std::string &title)
+{
+#ifdef _WIN32
+    FILE *pipe = _popen(("figlet \"" + title + "\"").c_str(), "r");
+#else
+    system("sudo apt install figlet");
+    FILE *pipe = popen(("figlet \"" + title + "\"").c_str(), "r");
+#endif
+    if (!pipe)
+        return;
+
+    char buffer[128];
+    while (fgets(buffer, sizeof(buffer), pipe) != nullptr)
+    {
+        std::cout << "\033[1;35m" << buffer << "\033[0m";
+    }
+
+#ifdef _WIN32
+    _pclose(pipe);
+#else
+    pclose(pipe);
+#endif
+}
+
 int main(int, char **)
 {
+#ifdef _WIN32
+    // Forzar consola UTF-8
+    system("chcp 65001 > nul");
+#endif
+    // Título del programa
+    std::cout << "\033[1;36m\n=========================================\033[0m\n";
+    std::cout << "\033[1;32m=                                       =\033[0m\n";
+    std::cout << "\033[1;32m=     Cliente de Conexión TCP/IP        =\033[0m\n";
+    std::cout << "\033[1;32m=            by: André 🍐               =\033[0m\n";
+    std::cout << "\033[1;32m=                                       =\033[0m\n";
+    std::cout << "\033[1;36m=========================================\033[0m\n\n";
+
+    printFigletTitle("Nautilus 4010");
+
     SOCKET clientSocket;
     WSADATA wsaData;
     WORD wVersionRequested = MAKEWORD(2, 2);
@@ -48,10 +86,10 @@ int main(int, char **)
     std::string ip;
     int port;
 
-    std::cout << "Ingrese la dirección IP del servidor: ";
+    std::cout << "\033[36m\nIngrese la dirección IP del servidor: \033[37m";
     std::getline(std::cin, ip);
 
-    std::cout << "Ingrese el puerto del servidor: ";
+    std::cout << "\033[36mIngrese el puerto del servidor: \033[37m";
     std::cin >> port;
     std::cin.ignore();
 
@@ -132,29 +170,61 @@ int main(int, char **)
             {
                 receiveMessage(clientSocket, msg);
                 if (msg == "end")
-                    break;
-
-                if (!std::all_of(msg.begin(), msg.end(), ::isdigit) && !(msg[0] == '-' && std::isdigit(msg[1])))
                 {
-                    std::cerr << "Mensaje inesperado recibido: " << msg << "\n";
-                    break; // o continúa, dependiendo de tu lógica
+                    sendMessage(clientSocket, "end");
+                    break;
                 }
 
-                int x = std::stoi(msg);
+                // Función auxiliar para validar si es un número válido (entero o decimal)
+                auto isValidNumber = [](const std::string &str) -> bool
+                {
+                    if (str.empty())
+                        return false;
+
+                    size_t start = 0;
+                    if (str[0] == '-')
+                    {
+                        if (str.length() == 1)
+                            return false;
+                        start = 1;
+                    }
+
+                    bool hasDot = false;
+                    for (size_t i = start; i < str.length(); ++i)
+                    {
+                        if (str[i] == '.')
+                        {
+                            if (hasDot)
+                                return false; // Más de un punto
+                            hasDot = true;
+                        }
+                        else if (!std::isdigit(str[i]))
+                        {
+                            return false;
+                        }
+                    }
+                    return true;
+                };
+
+                if (!isValidNumber(msg))
+                {
+                    std::cerr << "\033[31mMensaje inesperado recibido: " << msg << "\033[37m\n"; // Mensaje en rojo
+                    break;
+                }
+
+                double x = std::stod(msg);
 
                 receiveMessage(clientSocket, msg);
-                if (!std::all_of(msg.begin(), msg.end(), ::isdigit) && !(msg[0] == '-' && std::isdigit(msg[1])))
+                if (!isValidNumber(msg))
                 {
-                    std::cerr << "Mensaje inesperado recibido: " << msg << "\n";
+                    std::cerr << "\033[31mMensaje inesperado recibido: " << msg << "\033[37m\n"; // Mensaje en rojo
                     break;
                 }
 
-                int y = std::stoi(msg);
+                double y = std::stod(msg);
 
-                std::cout << "Path: x" << x << " y" << y << "\n";
+                std::cout << "\033[33mPath: x" << x << " y" << y << "\033[37m\n"; // Mensaje en amarillo
             }
-
-            sendMessage(clientSocket, "end");
             receiveMessage(clientSocket, msg);
 
             onCmd = false;
@@ -171,7 +241,7 @@ int main(int, char **)
 
             if (msg == "test ok")
             {
-                std::cout << "Prueba completada con éxito.\n";
+                std::cout << "\033[32mPrueba completada con éxito.\033[37m\n";
             }
             onCmd = false;
         }
@@ -192,6 +262,6 @@ int main(int, char **)
 
     closesocket(clientSocket);
     WSACleanup();
-    std::cout << "Cliente finalizado.\n";
+    std::cout << "\033[36mCliente finalizado.\033[37m\n"; // Mensaje en cian
     return 0;
 }

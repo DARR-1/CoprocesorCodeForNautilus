@@ -81,6 +81,7 @@ CMakeFiles/NautilusCoproccesor.dir/ClientConnection.cpp.obj: E:/CoprocesorCodeFo
   C:/msys64/ucrt64/include/c++/15.1.0/cstddef \
   C:/msys64/ucrt64/include/c++/15.1.0/cstdio \
   C:/msys64/ucrt64/include/c++/15.1.0/cstdlib \
+  C:/msys64/ucrt64/include/c++/15.1.0/cstring \
   C:/msys64/ucrt64/include/c++/15.1.0/cwchar \
   C:/msys64/ucrt64/include/c++/15.1.0/cwctype \
   C:/msys64/ucrt64/include/c++/15.1.0/debug/assertions.h \
@@ -1768,6 +1769,10 @@ C:/msys64/ucrt64/include/threadpoolapiset.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/cstdio:
 
+C:/msys64/ucrt64/include/securityappcontainer.h:
+
+C:/msys64/ucrt64/include/c++/15.1.0/cstring:
+
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/rtmintrin.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/cwctype:
@@ -2115,10 +2120,6 @@ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/avx512bitalgintrin.h:
 C:/msys64/ucrt64/include/sec_api/stdio_s.h:
 
 C:/msys64/ucrt64/include/sec_api/sys/timeb_s.h:
-
-C:/msys64/ucrt64/include/c++/15.1.0/cstring:
-
-C:/msys64/ucrt64/include/securityappcontainer.h:
 
 C:/msys64/ucrt64/include/securitybaseapi.h:
 

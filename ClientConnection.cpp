@@ -9,6 +9,7 @@
 #include <arpa/inet.h>
 #endif
 #include <iostream>
+#include <cstring>
 
 ClientConnection::ClientConnection(SOCKET socket)
 {
@@ -23,7 +24,17 @@ int ClientConnection::send(const char *buffer, int length)
         perror("send() failed");
         return -1;
     }
-    std::cout << "\033[32mEnviando mensaje al cliente " << (ClientConnection::getName()) << ": " << buffer << " (" << length << " bytes)\033[37m\n";
+
+    if (length == sizeof(int))
+    {
+        int num;
+        std::memcpy(&num, buffer, sizeof(int));
+        std::cout << "\033[32mEnviando mensaje al cliente " << getName() << ": " << num << " (" << length << " bytes)\033[0m\n";
+    }
+    else
+    {
+        std::cout << "\033[32mEnviando mensaje al cliente " << getName() << ": " << std::string(buffer, length) << " (" << length << " bytes)\033[0m\n";
+    }
 
     return bytesSent;
 }
@@ -36,7 +47,16 @@ int ClientConnection::receive(char *buffer, int length)
         perror("recv() failed");
         return -1;
     }
-    std::cout << "\033[34m[" << (ClientConnection::getName()) << "] " << buffer << " (" << bytesReceived << " bytes)\033[37m\n";
+    if (length == sizeof(int))
+    {
+        int num;
+        std::memcpy(&num, buffer, sizeof(int));
+        std::cout << "\033[34mEnviando mensaje al cliente " << getName() << ": " << num << " (" << length << " bytes)\033[0m\n";
+    }
+    else
+    {
+        std::cout << "\033[34m[" << getName() << "] " << std::string(buffer, length) << " (" << length << " bytes)\033[0m\n";
+    }
 
     return bytesReceived;
 }
