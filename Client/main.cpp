@@ -42,19 +42,18 @@ bool receiveMessage(SOCKET sock, std::string &msg)
 void printFigletTitle(const std::string &title)
 {
 #ifdef _WIN32
-    FILE *pipe = _popen(("figlet \"" + title + "\"").c_str(), "r");
+    std::string cmd = "bin\\figlet.exe -d fonts \"" + title + "\"";
+    FILE *pipe = _popen(cmd.c_str(), "r");
 #else
-    system("sudo apt install figlet");
-    FILE *pipe = popen(("figlet \"" + title + "\"").c_str(), "r");
+    std::string cmd = "figlet \"" + title + "\"";
+    FILE *pipe = popen(cmd.c_str(), "r");
 #endif
     if (!pipe)
         return;
 
-    char buffer[128];
-    while (fgets(buffer, sizeof(buffer), pipe) != nullptr)
-    {
-        std::cout << "\033[1;35m" << buffer << "\033[0m";
-    }
+    char buf[128];
+    while (fgets(buf, sizeof(buf), pipe))
+        std::cout << "\033[1;35m" << buf << "\033[0m";
 
 #ifdef _WIN32
     _pclose(pipe);

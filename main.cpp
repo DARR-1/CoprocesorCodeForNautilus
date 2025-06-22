@@ -25,19 +25,18 @@ using Path = std::vector<Pair>;
 void printFigletTitle(const std::string &title)
 {
 #ifdef _WIN32
-    FILE *pipe = _popen(("figlet \"" + title + "\"").c_str(), "r");
+    std::string cmd = "bin\\figlet.exe -d fonts \"" + title + "\"";
+    FILE *pipe = _popen(cmd.c_str(), "r");
 #else
-    system("sudo apt install figlet");
-    FILE *pipe = popen(("figlet \"" + title + "\"").c_str(), "r");
+    std::string cmd = "figlet \"" + title + "\"";
+    FILE *pipe = popen(cmd.c_str(), "r");
 #endif
     if (!pipe)
         return;
 
-    char buffer[128];
-    while (fgets(buffer, sizeof(buffer), pipe) != nullptr)
-    {
-        std::cout << "\033[1;35m" << buffer << "\033[0m";
-    }
+    char buf[128];
+    while (fgets(buf, sizeof(buf), pipe))
+        std::cout << "\033[1;35m" << buf << "\033[0m";
 
 #ifdef _WIN32
     _pclose(pipe);
@@ -54,24 +53,7 @@ int main(int argc, char *argv[])
         // Forzar consola UTF-8
         system("chcp 65001 > nul");
 #else
-        if (getuid() != 0)
-        {
-            std::cout << "Requiere permisos de superusuario. Intentando relanzar con sudo...\n";
-
-            // Construir el comando: sudo + ruta del ejecutable + argumentos
-            std::string cmd = "sudo ";
-            for (int i = 0; i < argc; ++i)
-            {
-                cmd += "\"";
-                cmd += argv[i];
-                cmd += "\" ";
-            }
-
-            int result = system(cmd.c_str());
-            return result;
-        }
-
-        std::cout << "Ejecutando con permisos de root.\n";
+        setenv("LC_ALL", "en_US.UTF-8", 1);
 #endif
 
         const std::string reset = "\033[0m";
