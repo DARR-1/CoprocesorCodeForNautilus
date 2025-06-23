@@ -23,7 +23,6 @@ class Server
 {
 private:
     SOCKET ListenSocket;
-    std::string hostname;
     std::string ip;
     u_short port;
     sockaddr_in service;
@@ -33,8 +32,10 @@ private:
     WSADATA wsaData;
 #endif
 
+    std::string getLocalIP();  // Nueva función
+
 public:
-    Server(u_short port, std::string hostname = "127.0.0.1");
+    Server(u_short port);
     ~Server();
     int initialize();
     int listen();
