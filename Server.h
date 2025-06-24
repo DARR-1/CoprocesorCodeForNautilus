@@ -32,10 +32,10 @@ private:
     WSADATA wsaData;
 #endif
 
-    std::string getLocalIP();  // Nueva función
+    std::string getLocalIP();  // Detectar IP automáticamente
 
 public:
-    Server(u_short port);
+    Server(u_short port, std::string ipOverride = "");  // IP opcional
     ~Server();
     int initialize();
     int listen();
