@@ -148,7 +148,7 @@ int main(int argc, char *argv[])
         setupSystemdService(argv[0]);
         return 0;
     }
-
+    
     // Detener el servicio para correr en foreground (solo si existe)
     system("systemctl stop coproc.service");
     setenv("LC_ALL", "en_US.UTF-8", 1);
@@ -169,7 +169,19 @@ int main(int argc, char *argv[])
     std::cout << reset;
     printFigletTitle("Nautilus 4010");
 
-    Server server(27015);
+    std::string ipOverride = "";
+
+    for (int i = 1; i < argc - 1; ++i)
+    {
+        if (std::strcmp(argv[i], "--ip") == 0)
+        {
+            ipOverride = argv[i + 1];
+            break;
+        }
+    }
+    
+    Server server(27015, ipOverride);
+
     if (server.initialize() != 0 || server.listen() != 0)
         return 1;
 
