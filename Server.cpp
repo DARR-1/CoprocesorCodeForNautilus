@@ -1,20 +1,20 @@
 #include "Server.h"
 #include <iostream>
 #include <cstring>
-#include <thread>
 #include <vector>
 #include <chrono>
-#include <cstdlib>
 #include <cmath>
+#include <thread>
+#include <cstdlib>
 #include "astar.h"
 #include "ClientConnection.h"
 
 Server::~Server() {}
 
-Server::Server(u_short port)
+Server::Server(u_short port, std::string ipOverride)
 {
     this->port = port;
-    this->ip = getLocalIP();  // Detecta IP automáticamente
+    this->ip = ipOverride.empty() ? getLocalIP() : ipOverride;
 }
 
 std::string Server::getLocalIP()
@@ -74,7 +74,7 @@ int Server::initialize()
         return 1;
     }
 
-    std::cout << "\033[1;32m🚦 Servidor inicializado con IP: " << ip \033[0m\n";
+    std::cout << "\033[1;32m🚦 Servidor inicializado con IP: " << ip << " en puerto " << port << "\033[0m\n";
     return 0;
 }
 
@@ -85,7 +85,7 @@ int Server::listen()
         std::cerr << "\033[1;31mlisten() failed.\033[0m\n";
         return 1;
     }
-    std::cout << "\033[1;32m👂 Servidor escuchando en puerto " << port << "\033[0m\n";
+    std::cout << "\033[1;34m👂 Servidor escuchando en puerto " << port << "\033[0m\n";
     return 0;
 }
 
@@ -109,4 +109,4 @@ ClientConnection Server::accept()
     return ClientConnection(clientSocket);
 }
 
-// Aquí seguiría el resto del código de handleClient(), etc.
+// Aquí iría handleClient() como ya lo tienes.
