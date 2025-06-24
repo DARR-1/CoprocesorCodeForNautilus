@@ -14,6 +14,7 @@ add_executable(NautilusCoproccesor astar.cpp main.cpp Server.cpp ClientConnectio
 
 target_link_libraries(NautilusCoproccesor
     Ws2_32
+    iphlpapi
 )
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})

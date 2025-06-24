@@ -11,6 +11,7 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <netdb.h>
+#include <ifaddrs.h>
 #define INVALID_SOCKET (-1)
 #define SOCKET_ERROR (-1)
 #define closesocket close
@@ -23,6 +24,7 @@ class Server
 {
 private:
     SOCKET ListenSocket;
+    std::string hostname;
     std::string ip;
     u_short port;
     sockaddr_in service;
@@ -32,13 +34,13 @@ private:
     WSADATA wsaData;
 #endif
 
-    std::string getLocalIP();  // Detectar IP automáticamente
-
 public:
-    Server(u_short port, std::string ipOverride = "");  // IP opcional
+    Server(u_short port, std::string hostname = "");
     ~Server();
     int initialize();
     int listen();
     ClientConnection accept();
     void handleClient(ClientConnection client, const std::vector<std::vector<int>> &grid);
+
+    static std::string getLocalIP();
 };

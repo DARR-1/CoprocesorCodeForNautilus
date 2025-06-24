@@ -5,6 +5,7 @@
 #include <vector>
 #include <cstdlib>
 #include <algorithm> // <-- necesario para std::all_of
+#include <fstream>   // <-- necesario para std::ifstream
 
 #pragma comment(lib, "ws2_32.lib")
 
@@ -39,27 +40,61 @@ bool receiveMessage(SOCKET sock, std::string &msg)
     return true;
 }
 
-void printFigletTitle(const std::string &title)
+void printLogoFromFile()
 {
-#ifdef _WIN32
-    std::string cmd = "bin\\figlet.exe -d fonts \"" + title + "\"";
-    FILE *pipe = _popen(cmd.c_str(), "r");
-#else
-    std::string cmd = "figlet \"" + title + "\"";
-    FILE *pipe = popen(cmd.c_str(), "r");
-#endif
-    if (!pipe)
+    std::string logoPath = "bin\\logo.txt";
+    std::ifstream logoFile(logoPath);
+
+    if (!logoFile.is_open())
+    {
+        std::cerr << "\033[31mNo se pudo abrir el archivo: " << logoPath << "\033[37m\n";
         return;
+    }
 
-    char buf[128];
-    while (fgets(buf, sizeof(buf), pipe))
-        std::cout << "\033[1;35m" << buf << "\033[0m";
+    std::string line;
+    while (std::getline(logoFile, line))
+    {
+        std::string filteredLine = "";
+        bool inEscapeSequence = false;
 
-#ifdef _WIN32
-    _pclose(pipe);
-#else
-    pclose(pipe);
-#endif
+        for (size_t i = 0; i < line.length(); ++i)
+        {
+            if (line[i] == '\033' || (inEscapeSequence && line[i] == '['))
+            {
+                inEscapeSequence = true;
+                continue;
+            }
+            else if (inEscapeSequence && line[i] == 'm')
+            {
+                inEscapeSequence = false;
+                continue;
+            }
+            else if (inEscapeSequence)
+            {
+                // Saltar caracteres de la secuencia de escape
+                continue;
+            }
+            else if (line[i] == '.')
+            {
+                // Reemplazar puntos por espacios
+                filteredLine += ' ';
+            }
+            else if (line[i] == ' ')
+            {
+                // Mantener espacios
+                filteredLine += ' ';
+            }
+            else
+            {
+                // Para cualquier otro caracter visible, usar color amarillo
+                filteredLine += "\033[1;33m" + std::string(1, line[i]) + "\033[0m";
+            }
+        }
+
+        std::cout << filteredLine << "\n";
+    }
+
+    logoFile.close();
 }
 
 int main(int, char **)
@@ -69,14 +104,31 @@ int main(int, char **)
     system("chcp 65001 > nul");
 #endif
     // Título del programa
-    std::cout << "\033[1;36m\n=========================================\033[0m\n";
-    std::cout << "\033[1;32m=                                       =\033[0m\n";
-    std::cout << "\033[1;32m=     Cliente de Conexión TCP/IP        =\033[0m\n";
-    std::cout << "\033[1;32m=            by: André 🍐               =\033[0m\n";
-    std::cout << "\033[1;32m=                                       =\033[0m\n";
-    std::cout << "\033[1;36m=========================================\033[0m\n\n";
+    const std::string reset = "\033[0m";
+    const std::string bold = "\033[1m";
+    const std::string cyan = "\033[36m";
 
-    printFigletTitle("Nautilus 4010");
+    std::cout << bold << cyan;
+    std::cout << "\n╔══════════════════════════════════════════════════════════╗\n";
+    std::cout << "║                                                          ║\n";
+    std::cout << "║              \033[1;32mINICIANDO CODIGO COPROCESADOR\033[36m               ║\n";
+    std::cout << "║                       \033[1;32mby: André 🍐\033[36m                       ║\n";
+    std::cout << "║                                                          ║\n";
+    std::cout << "╚══════════════════════════════════════════════════════════╝\n\n";
+    std::cout << reset;
+
+    printLogoFromFile();
+
+    std::cout << "\033[1;33m";
+    std::cout <<
+        R"(
+███╗   ██╗ █████╗ ██╗   ██╗████████╗██╗██╗     ██╗   ██╗███████╗    ██╗  ██╗ ██████╗  ██╗ ██████╗        ██████╗ 
+████╗  ██║██╔══██╗██║   ██║╚══██╔══╝██║██║     ██║   ██║██╔════╝    ██║  ██║██╔═████╗███║██╔═████╗    ██╗██╔══██╗
+██╔██╗ ██║███████║██║   ██║   ██║   ██║██║     ██║   ██║███████╗    ███████║██║██╔██║╚██║██║██╔██║    ╚═╝██║  ██║
+██║╚██╗██║██╔══██║██║   ██║   ██║   ██║██║     ██║   ██║╚════██║    ╚════██║████╔╝██║ ██║████╔╝██║    ██╗██║  ██║
+██║ ╚████║██║  ██║╚██████╔╝   ██║   ██║███████╗╚██████╔╝███████║         ██║╚██████╔╝ ██║╚██████╔╝    ╚═╝██████╔╝
+╚═╝  ╚═══╝╚═╝  ╚═╝ ╚═════╝    ╚═╝   ╚═╝╚══════╝ ╚═════╝ ╚══════╝         ╚═╝ ╚═════╝  ╚═╝ ╚═════╝        ╚═════╝ 
+)" << std::endl;
 
     SOCKET clientSocket;
     WSADATA wsaData;

@@ -28,6 +28,7 @@ CMakeFiles/Client.dir/main.cpp.obj: E:/CoprocesorCodeForNautilus/Client/main.cpp
   C:/msys64/ucrt64/include/c++/15.1.0/bits/basic_string.tcc \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/char_traits.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/charconv.h \
+  C:/msys64/ucrt64/include/c++/15.1.0/bits/codecvt.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/concept_check.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/cpp_type_traits.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/cxxabi_forced.h \
@@ -35,6 +36,7 @@ CMakeFiles/Client.dir/main.cpp.obj: E:/CoprocesorCodeForNautilus/Client/main.cpp
   C:/msys64/ucrt64/include/c++/15.1.0/bits/exception.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/exception_defines.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/exception_ptr.h \
+  C:/msys64/ucrt64/include/c++/15.1.0/bits/fstream.tcc \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/functexcept.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/functional_hash.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bits/hash_bytes.h \
@@ -101,6 +103,7 @@ CMakeFiles/Client.dir/main.cpp.obj: E:/CoprocesorCodeForNautilus/Client/main.cpp
   C:/msys64/ucrt64/include/c++/15.1.0/ext/numeric_traits.h \
   C:/msys64/ucrt64/include/c++/15.1.0/ext/string_conversions.h \
   C:/msys64/ucrt64/include/c++/15.1.0/ext/type_traits.h \
+  C:/msys64/ucrt64/include/c++/15.1.0/fstream \
   C:/msys64/ucrt64/include/c++/15.1.0/initializer_list \
   C:/msys64/ucrt64/include/c++/15.1.0/ios \
   C:/msys64/ucrt64/include/c++/15.1.0/iosfwd \
@@ -122,8 +125,10 @@ CMakeFiles/Client.dir/main.cpp.obj: E:/CoprocesorCodeForNautilus/Client/main.cpp
   C:/msys64/ucrt64/include/c++/15.1.0/typeinfo \
   C:/msys64/ucrt64/include/c++/15.1.0/vector \
   C:/msys64/ucrt64/include/c++/15.1.0/x86_64-w64-mingw32/bits/atomic_word.h \
+  C:/msys64/ucrt64/include/c++/15.1.0/x86_64-w64-mingw32/bits/basic_file.h \
   C:/msys64/ucrt64/include/c++/15.1.0/x86_64-w64-mingw32/bits/c++allocator.h \
   C:/msys64/ucrt64/include/c++/15.1.0/x86_64-w64-mingw32/bits/c++config.h \
+  C:/msys64/ucrt64/include/c++/15.1.0/x86_64-w64-mingw32/bits/c++io.h \
   C:/msys64/ucrt64/include/c++/15.1.0/x86_64-w64-mingw32/bits/c++locale.h \
   C:/msys64/ucrt64/include/c++/15.1.0/x86_64-w64-mingw32/bits/cpu_defines.h \
   C:/msys64/ucrt64/include/c++/15.1.0/x86_64-w64-mingw32/bits/ctype_base.h \
@@ -469,6 +474,8 @@ C:/msys64/ucrt64/include/imm.h:
 
 C:/msys64/ucrt64/include/_mingw.h:
 
+C:/msys64/ucrt64/include/c++/15.1.0/bits/codecvt.h:
+
 C:/msys64/ucrt64/include/mmiscapi2.h:
 
 C:/msys64/ucrt64/include/_mingw_mac.h:
@@ -502,8 +509,6 @@ C:/msys64/ucrt64/include/apisetcconv.h:
 C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_tempbuf.h:
 
 C:/msys64/ucrt64/include/basetsd.h:
-
-C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_construct.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/bits/predefined_ops.h:
 
@@ -597,6 +602,8 @@ C:/msys64/ucrt64/include/c++/15.1.0/bits/string_view.tcc:
 
 C:/msys64/ucrt64/include/c++/15.1.0/bits/exception.h:
 
+C:/msys64/ucrt64/include/c++/15.1.0/bits/fstream.tcc:
+
 C:/msys64/ucrt64/include/timezoneapi.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/bits/exception_ptr.h:
@@ -654,6 +661,8 @@ C:/msys64/ucrt64/include/c++/15.1.0/bits/refwrap.h:
 C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_vector.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_bvector.h:
+
+C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_construct.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/ext/atomicity.h:
 
@@ -759,6 +768,12 @@ C:/msys64/ucrt64/include/c++/15.1.0/ext/string_conversions.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/ext/type_traits.h:
 
+C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/xtestintrin.h:
+
+C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/avx512bwintrin.h:
+
+C:/msys64/ucrt64/include/c++/15.1.0/fstream:
+
 C:/msys64/ucrt64/include/c++/15.1.0/initializer_list:
 
 C:/msys64/ucrt64/include/rpcsal.h:
@@ -813,11 +828,15 @@ C:/msys64/ucrt64/include/c++/15.1.0/type_traits:
 
 C:/msys64/ucrt64/include/c++/15.1.0/x86_64-w64-mingw32/bits/atomic_word.h:
 
+C:/msys64/ucrt64/include/c++/15.1.0/x86_64-w64-mingw32/bits/basic_file.h:
+
 C:/msys64/ucrt64/include/c++/15.1.0/x86_64-w64-mingw32/bits/c++allocator.h:
 
 C:/msys64/ucrt64/include/wtypes.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/x86_64-w64-mingw32/bits/c++config.h:
+
+C:/msys64/ucrt64/include/c++/15.1.0/x86_64-w64-mingw32/bits/c++io.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/x86_64-w64-mingw32/bits/c++locale.h:
 
@@ -1196,10 +1215,6 @@ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/avx2intrin.h:
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/avx512bf16vlintrin.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/avx512bitalgvlintrin.h:
-
-C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/xtestintrin.h:
-
-C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/avx512bwintrin.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/fxsrintrin.h:
 

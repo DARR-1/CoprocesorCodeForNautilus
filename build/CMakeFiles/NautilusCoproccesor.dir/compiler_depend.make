@@ -612,16 +612,24 @@ CMakeFiles/NautilusCoproccesor.dir/Server.cpp.obj: E:/CoprocesorCodeForNautilus/
   C:/msys64/ucrt64/include/guiddef.h \
   C:/msys64/ucrt64/include/handleapi.h \
   C:/msys64/ucrt64/include/heapapi.h \
+  C:/msys64/ucrt64/include/ifdef.h \
   C:/msys64/ucrt64/include/imm.h \
   C:/msys64/ucrt64/include/in6addr.h \
   C:/msys64/ucrt64/include/inaddr.h \
   C:/msys64/ucrt64/include/interlockedapi.h \
   C:/msys64/ucrt64/include/ioapiset.h \
+  C:/msys64/ucrt64/include/ipexport.h \
+  C:/msys64/ucrt64/include/iphlpapi.h \
+  C:/msys64/ucrt64/include/ipifcons.h \
+  C:/msys64/ucrt64/include/ipmib.h \
+  C:/msys64/ucrt64/include/iprtrmib.h \
+  C:/msys64/ucrt64/include/iptypes.h \
   C:/msys64/ucrt64/include/jobapi.h \
   C:/msys64/ucrt64/include/joystickapi.h \
   C:/msys64/ucrt64/include/ktmtypes.h \
   C:/msys64/ucrt64/include/libloaderapi.h \
   C:/msys64/ucrt64/include/limits.h \
+  C:/msys64/ucrt64/include/lmcons.h \
   C:/msys64/ucrt64/include/locale.h \
   C:/msys64/ucrt64/include/lzexpand.h \
   C:/msys64/ucrt64/include/malloc.h \
@@ -636,16 +644,21 @@ CMakeFiles/NautilusCoproccesor.dir/Server.cpp.obj: E:/CoprocesorCodeForNautilus/
   C:/msys64/ucrt64/include/mmiscapi2.h \
   C:/msys64/ucrt64/include/mmsyscom.h \
   C:/msys64/ucrt64/include/mmsystem.h \
+  C:/msys64/ucrt64/include/mprapi.h \
   C:/msys64/ucrt64/include/mstcpip.h \
   C:/msys64/ucrt64/include/msxml.h \
   C:/msys64/ucrt64/include/namedpipeapi.h \
   C:/msys64/ucrt64/include/namespaceapi.h \
+  C:/msys64/ucrt64/include/naptypes.h \
   C:/msys64/ucrt64/include/nb30.h \
   C:/msys64/ucrt64/include/ncrypt.h \
+  C:/msys64/ucrt64/include/netioapi.h \
+  C:/msys64/ucrt64/include/nldef.h \
   C:/msys64/ucrt64/include/oaidl.h \
   C:/msys64/ucrt64/include/objbase.h \
   C:/msys64/ucrt64/include/objidl.h \
   C:/msys64/ucrt64/include/objidlbase.h \
+  C:/msys64/ucrt64/include/ocidl.h \
   C:/msys64/ucrt64/include/ole2.h \
   C:/msys64/ucrt64/include/oleauto.h \
   C:/msys64/ucrt64/include/oleidl.h \
@@ -665,6 +678,7 @@ CMakeFiles/NautilusCoproccesor.dir/Server.cpp.obj: E:/CoprocesorCodeForNautilus/
   C:/msys64/ucrt64/include/psdk_inc/_ws1_undef.h \
   C:/msys64/ucrt64/include/psdk_inc/_wsa_errnos.h \
   C:/msys64/ucrt64/include/psdk_inc/_wsadata.h \
+  C:/msys64/ucrt64/include/psdk_inc/_xmitfile.h \
   C:/msys64/ucrt64/include/psdk_inc/intrin-impl.h \
   C:/msys64/ucrt64/include/pshpack1.h \
   C:/msys64/ucrt64/include/pshpack2.h \
@@ -676,6 +690,7 @@ CMakeFiles/NautilusCoproccesor.dir/Server.cpp.obj: E:/CoprocesorCodeForNautilus/
   C:/msys64/ucrt64/include/pthread_time.h \
   C:/msys64/ucrt64/include/pthread_unistd.h \
   C:/msys64/ucrt64/include/qos.h \
+  C:/msys64/ucrt64/include/ras.h \
   C:/msys64/ucrt64/include/realtimeapiset.h \
   C:/msys64/ucrt64/include/reason.h \
   C:/msys64/ucrt64/include/rpc.h \
@@ -717,12 +732,15 @@ CMakeFiles/NautilusCoproccesor.dir/Server.cpp.obj: E:/CoprocesorCodeForNautilus/
   C:/msys64/ucrt64/include/sys/types.h \
   C:/msys64/ucrt64/include/sysinfoapi.h \
   C:/msys64/ucrt64/include/systemtopologyapi.h \
+  C:/msys64/ucrt64/include/tcpestats.h \
+  C:/msys64/ucrt64/include/tcpmib.h \
   C:/msys64/ucrt64/include/threadpoolapiset.h \
   C:/msys64/ucrt64/include/threadpoollegacyapiset.h \
   C:/msys64/ucrt64/include/time.h \
   C:/msys64/ucrt64/include/timeapi.h \
   C:/msys64/ucrt64/include/timezoneapi.h \
   C:/msys64/ucrt64/include/tvout.h \
+  C:/msys64/ucrt64/include/udpmib.h \
   C:/msys64/ucrt64/include/unknwn.h \
   C:/msys64/ucrt64/include/unknwnbase.h \
   C:/msys64/ucrt64/include/urlmon.h \
@@ -1627,11 +1645,15 @@ C:/msys64/ucrt64/include/c++/15.1.0/bits/basic_string.tcc:
 
 C:/msys64/ucrt64/include/c++/15.1.0/bits/char_traits.h:
 
+C:/msys64/ucrt64/include/ras.h:
+
 C:/msys64/ucrt64/include/c++/15.1.0/bits/functexcept.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/bits/concept_check.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/bits/functional_hash.h:
+
+C:/msys64/ucrt64/include/mprapi.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/bits/cpp_type_traits.h:
 
@@ -1656,6 +1678,8 @@ C:/msys64/ucrt64/include/c++/15.1.0/bits/exception.h:
 C:/msys64/ucrt64/include/timezoneapi.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/bits/exception_ptr.h:
+
+C:/msys64/ucrt64/include/ipmib.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/sm3intrin.h:
 
@@ -1734,6 +1758,8 @@ C:/msys64/ucrt64/include/rpcdce.h:
 C:/msys64/ucrt64/include/c++/15.1.0/bits/uses_allocator.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/bits/uses_allocator_args.h:
+
+C:/msys64/ucrt64/include/tcpmib.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/keylockerintrin.h:
 
@@ -1987,6 +2013,8 @@ C:/msys64/ucrt64/include/minwinbase.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_tree.h:
 
+C:/msys64/ucrt64/include/netioapi.h:
+
 C:/msys64/ucrt64/include/winperf.h:
 
 C:/msys64/ucrt64/include/minwindef.h:
@@ -2171,6 +2199,8 @@ C:/msys64/ucrt64/include/timeapi.h:
 
 C:/msys64/ucrt64/include/unknwn.h:
 
+C:/msys64/ucrt64/include/ifdef.h:
+
 C:/msys64/ucrt64/include/unknwnbase.h:
 
 E:/CoprocesorCodeForNautilus/Server.h:
@@ -2197,6 +2227,8 @@ C:/msys64/ucrt64/include/winefs.h:
 
 C:/msys64/ucrt64/include/winioctl.h:
 
+C:/msys64/ucrt64/include/tcpestats.h:
+
 C:/msys64/ucrt64/include/winnls.h:
 
 C:/msys64/ucrt64/include/winnt.h:
@@ -2214,6 +2246,8 @@ C:/msys64/ucrt64/include/winuser.h:
 C:/msys64/ucrt64/include/winver.h:
 
 C:/msys64/ucrt64/include/wnnc.h:
+
+C:/msys64/ucrt64/include/ocidl.h:
 
 C:/msys64/ucrt64/include/wow64apiset.h:
 
@@ -2264,6 +2298,8 @@ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/avx10_2copyintrin.h:
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/avx10_2minmaxintrin.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/avx10_2satcvtintrin.h:
+
+C:/msys64/ucrt64/include/ipifcons.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/avx2intrin.h:
 
@@ -2387,6 +2423,8 @@ C:/msys64/ucrt64/include/c++/15.1.0/bits/fstream.tcc:
 
 C:/msys64/ucrt64/include/c++/15.1.0/bits/specfun.h:
 
+C:/msys64/ucrt64/include/iphlpapi.h:
+
 C:/msys64/ucrt64/include/c++/15.1.0/bits/std_thread.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_vector.h:
@@ -2409,11 +2447,15 @@ C:/msys64/ucrt64/include/c++/15.1.0/tr1/exp_integral.tcc:
 
 C:/msys64/ucrt64/include/c++/15.1.0/tr1/legendre_function.tcc:
 
+C:/msys64/ucrt64/include/udpmib.h:
+
 C:/msys64/ucrt64/include/c++/15.1.0/tr1/poly_hermite.tcc:
 
 C:/msys64/ucrt64/include/c++/15.1.0/tr1/poly_laguerre.tcc:
 
 C:/msys64/ucrt64/include/c++/15.1.0/tr1/riemann_zeta.tcc:
+
+C:/msys64/ucrt64/include/nldef.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/tr1/special_function_util.h:
 
@@ -2423,7 +2465,21 @@ C:/msys64/ucrt64/include/c++/15.1.0/x86_64-w64-mingw32/bits/c++io.h:
 
 C:/msys64/ucrt64/include/float.h:
 
+C:/msys64/ucrt64/include/ipexport.h:
+
+C:/msys64/ucrt64/include/iprtrmib.h:
+
+C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_multiset.h:
+
+C:/msys64/ucrt64/include/iptypes.h:
+
+C:/msys64/ucrt64/include/lmcons.h:
+
 C:/msys64/ucrt64/include/math.h:
+
+C:/msys64/ucrt64/include/naptypes.h:
+
+C:/msys64/ucrt64/include/psdk_inc/_xmitfile.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/stdint.h:
 
@@ -2432,8 +2488,6 @@ C:/msys64/ucrt64/include/c++/15.1.0/algorithm:
 C:/msys64/ucrt64/include/c++/15.1.0/bits/algorithmfwd.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_algo.h:
-
-C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_multiset.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/bits/uniform_int_dist.h:
 
